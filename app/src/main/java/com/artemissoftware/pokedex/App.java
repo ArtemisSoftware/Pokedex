@@ -1,5 +1,7 @@
 package com.artemissoftware.pokedex;
 
+import com.artemissoftware.pokedex.di.DaggerAppComponent;
+
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
@@ -17,6 +19,6 @@ public class App extends DaggerApplication {
 
         //Timber.d("AndroidInjector... ");
 
-        return null;//DaggerAppComponent.builder().application(this).build();
+        return DaggerAppComponent.builder().application(this).build();
     }
 }

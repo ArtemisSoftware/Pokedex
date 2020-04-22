@@ -3,7 +3,6 @@ package com.artemissoftware.pokedex.di;
 import android.app.Application;
 
 import com.artemissoftware.pokedex.App;
-import com.artemissoftware.pokedex.ui.encyclopedia.PokedexViewModel;
 
 import javax.inject.Singleton;
 
@@ -23,7 +22,6 @@ import dagger.android.AndroidInjector;
 
                 NetworkModule.class,
 
-                PokedexViewModel.class,
                 //PlayerModule.class
         }
 )

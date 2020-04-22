@@ -20,6 +20,10 @@ public class Resource <T> {
         this.message = message;
     }
 
+    public static <T> Resource<T> success(@NonNull T data) {
+        return new Resource<>(Status.SUCCESS, data, "");
+    }
+
     public static <T> Resource<T> success(@NonNull T data, @NonNull String message) {
         return new Resource<>(Status.SUCCESS, data, message);
     }

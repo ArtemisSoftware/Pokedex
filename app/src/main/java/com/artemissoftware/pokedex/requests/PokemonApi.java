@@ -10,6 +10,6 @@ public interface PokemonApi {
 
 
     @GET("pokemon/?")
-    Single<PokedexResults> getPokedex(@Query("offset") String offset, @Query("limit") String limit);
+    Single<PokedexResults> searchPokedex(@Query("offset") String offset, @Query("limit") String limit);
 
 }

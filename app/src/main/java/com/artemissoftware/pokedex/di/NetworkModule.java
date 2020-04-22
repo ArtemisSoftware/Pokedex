@@ -1,5 +1,6 @@
 package com.artemissoftware.pokedex.di;
 
+import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.PokemonApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
@@ -40,4 +41,16 @@ public class NetworkModule {
         //Timber.d("Providing FlickrApi: " + api);
         return api;
     }
+
+
+    @Provides
+    @Singleton
+    PokemonRepository provideRepository(PokemonApi apiInterface) {
+
+        PokemonRepository repository = new PokemonRepository(apiInterface);
+
+        //Timber.d("Providing repository: " + repository);
+        return repository;
+    }
+
 }

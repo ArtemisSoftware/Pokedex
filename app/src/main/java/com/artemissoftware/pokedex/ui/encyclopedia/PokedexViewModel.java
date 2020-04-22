@@ -7,6 +7,8 @@ import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
 
+import javax.inject.Inject;
+
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -22,7 +24,7 @@ public class PokedexViewModel extends ViewModel {
     private MutableLiveData<Resource> pokedexLiveData;
 
 
-    //@Inject
+    @Inject
     public PokedexViewModel(PokemonRepository pokemonRepository) {
 
         this.pokemonRepository = pokemonRepository;

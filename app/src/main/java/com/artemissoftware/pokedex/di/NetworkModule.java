@@ -4,6 +4,8 @@ import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.PokemonApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -15,6 +17,33 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class NetworkModule {
+
+    @Provides
+    @Singleton
+    OkHttpClient provideOkHttpClient() {
+
+        OkHttpClient client = new OkHttpClient.Builder()
+
+                //establish connection to server
+                .connectTimeout(ApiConstants.CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+
+                //time between each byte read from the server
+                .readTimeout(ApiConstants.READ_TIMEOUT, TimeUnit.SECONDS)
+
+                //time between each byte sent to server
+                .writeTimeout(ApiConstants.WRITE_TIMEOUT, TimeUnit.SECONDS)
+
+                .retryOnConnectionFailure(false)
+                //.addInterceptor(new UrlInterceptor())
+                .build();
+
+
+        //Timber.d("Providing OkHttpClient: " + client);
+        return client;
+    }
+
+
+
 
     @Provides
     @Singleton

@@ -1,5 +1,6 @@
 package com.artemissoftware.pokedex.di;
 
+import com.artemissoftware.pokedex.requests.PokemonApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
 import javax.inject.Singleton;
@@ -29,4 +30,14 @@ public class NetworkModule {
         return retrofit;
     }
 
+
+    @Provides
+    @Singleton
+    PokemonApi providePokemonApiInterface(Retrofit retrofit) {
+
+        PokemonApi api = retrofit.create(PokemonApi.class);
+
+        //Timber.d("Providing FlickrApi: " + api);
+        return api;
+    }
 }

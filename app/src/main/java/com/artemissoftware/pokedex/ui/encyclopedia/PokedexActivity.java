@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 
+import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
-public class PokedexActivity extends AppCompatActivity {
+public class PokedexActivity extends BaseActivity {
 
 
     private PokedexViewModel viewModel;

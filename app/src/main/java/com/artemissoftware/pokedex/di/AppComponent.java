@@ -16,13 +16,12 @@ import dagger.android.AndroidInjector;
 @Component(
         modules = {
                 AndroidInjectionModule.class,
-                //ActivityBuildersModule.class,
+                ActivityBuildersModule.class,
                 //AppModule.class,
                 ViewModelFactoryModule.class,
 
                 NetworkModule.class,
 
-                //PlayerModule.class
         }
 )
 public interface AppComponent extends AndroidInjector<App> {

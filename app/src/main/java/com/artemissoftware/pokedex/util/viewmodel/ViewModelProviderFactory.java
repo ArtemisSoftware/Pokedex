@@ -8,6 +8,9 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import dagger.Module;
+
+@Module
 public class ViewModelProviderFactory implements ViewModelProvider.Factory {
 
 

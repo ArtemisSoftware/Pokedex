@@ -16,16 +16,16 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
     @Override
     public void setContentView(int layoutResID) {
 
-        //ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_base, null);
-        //FrameLayout frameLayout = constraintLayout.findViewById(R.id.activity_content);
-        //mProgressBar = constraintLayout.findViewById(R.id.progress_bar);
+        ConstraintLayout constraintLayout = (ConstraintLayout) getLayoutInflater().inflate(R.layout.activity_base, null);
+        FrameLayout frameLayout = constraintLayout.findViewById(R.id.activity_content);
+        mProgressBar = constraintLayout.findViewById(R.id.progress_bar);
 
-        //getLayoutInflater().inflate(layoutResID, frameLayout, true);
+        getLayoutInflater().inflate(layoutResID, frameLayout, true);
 
         //pDialog = new AwesomeSuccessDialog(this);
 
 
-        super.setContentView(/*constraintLayout*/null);
+        super.setContentView(constraintLayout);
     }
 
     public void showProgressBar(boolean visible) {

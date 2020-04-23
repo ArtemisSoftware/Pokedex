@@ -12,7 +12,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
 
     public ProgressBar mProgressBar;
     //public AwesomeSuccessDialog pDialog;
-
+/*
     @Override
     public void setContentView(int layoutResID) {
 
@@ -27,7 +27,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
 
         super.setContentView(constraintLayout);
     }
-
+*/
     public void showProgressBar(boolean visible) {
 
         mProgressBar.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);

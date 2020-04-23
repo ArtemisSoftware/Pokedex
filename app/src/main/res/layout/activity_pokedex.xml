@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout>
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.artemissoftware.pokedex.ui.encyclopedia.PokedexViewModel"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:gl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -23,11 +33,25 @@
             style="@style/viewParent.headerText"
             android:text="@string/pokedex"/>
 
-        <TextView
-            style="@style/viewParent.headerText.contentText"
-            android:id="@+id/txt_number_results"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Never trust anyone who has not brought a book with them." />
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/viewParent.headerText.contentText"
+                android:text="Available pokemons: " />
+
+            <TextView
+                style="@style/viewParent.headerText.contentText"
+                android:id="@+id/txt_number_results"
+                android:text="@{viewmodel.name, default=0}" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
@@ -46,3 +70,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

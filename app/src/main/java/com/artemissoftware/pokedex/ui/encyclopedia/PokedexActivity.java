@@ -1,6 +1,7 @@
 package com.artemissoftware.pokedex.ui.encyclopedia;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
+import com.artemissoftware.pokedex.databinding.ActivityPokedexBinding;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
@@ -15,6 +17,7 @@ import javax.inject.Inject;
 
 public class PokedexActivity extends BaseActivity {
 
+    ActivityPokedexBinding mainBinding;
 
     private PokedexViewModel viewModel;
 
@@ -24,10 +27,14 @@ public class PokedexActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokedex);
-
-
+        //setContentView(R.layout.activity_pokedex);
+        
         viewModel = ViewModelProviders.of(this, providerFactory).get(PokedexViewModel.class);
+
+        ActivityPokedexBinding mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokedex);
+
+        mainBinding.setLifecycleOwner(this);
+        mainBinding.setViewmodel(viewModel);
 
         subscribeObservers();
 

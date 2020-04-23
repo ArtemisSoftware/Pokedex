@@ -1,5 +1,6 @@
 package com.artemissoftware.pokedex.ui.encyclopedia;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -24,6 +25,11 @@ public class PokedexViewModel extends ViewModel {
     private MutableLiveData<Resource> pokedexLiveData;
 
 
+    public MutableLiveData<String> name;
+
+
+
+
     @Inject
     public PokedexViewModel(PokemonRepository pokemonRepository) {
 
@@ -34,6 +40,10 @@ public class PokedexViewModel extends ViewModel {
 
         //Timber.d("Pokemon repository: " + this.pokemonRepository);
         //Timber.d("PokedexViewModel is ready");
+        name = new MutableLiveData<String>();
+
+
+
     }
 
 
@@ -61,6 +71,7 @@ public class PokedexViewModel extends ViewModel {
                     @Override
                     public void onSuccess(PokedexResults pokedexResults) {
                         pokedexLiveData.setValue(Resource.success(pokedexResults));
+                        name.setValue(pokedexResults.count);
                     }
 
                     @Override

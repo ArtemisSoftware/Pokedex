@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="pokemon"
+            type="com.artemissoftware.pokedex.requests.models.PokedexResults.PokemonInfo"/>
+
+    </data>
+
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,8 +34,8 @@
 
             <TextView
                 android:id="@+id/textViewSub1Title"
-                android:text="Maths"
-                style="@style/viewParent.headerText.HomeCardTitle" />
+                style="@style/viewParent.headerText.HomeCardTitle"
+                android:text="@{pokemon.name, default=Name}" />
 
             <TextView
                 android:text="Study nature, love nature,\nclose to nature"
@@ -39,6 +50,5 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-
-
 </LinearLayout>
+</layout>

@@ -12,6 +12,7 @@ import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityPokedexBinding;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.ui.encyclopedia.adapters.OnPokedexListener;
 import com.artemissoftware.pokedex.ui.encyclopedia.adapters.PokedexRecyclerAdapter;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class PokedexActivity extends BaseActivity {
+public class PokedexActivity extends BaseActivity implements OnPokedexListener {
 
     ActivityPokedexBinding mainBinding;
 
@@ -71,5 +72,11 @@ public class PokedexActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+
+    @Override
+    public void onPokedexClick(String id) {
+
     }
 }

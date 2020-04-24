@@ -17,11 +17,11 @@ import java.util.List;
 
 public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private List<PokemonInfo> mProducts = new ArrayList<>();
+    private List<PokemonInfo> registers = new ArrayList<>();
     private Context mContext;
 
     public PokedexRecyclerAdapter(Context context, List<PokemonInfo> products) {
-        mProducts = products;
+        registers = products;
         mContext = context;
     }
 
@@ -39,22 +39,22 @@ public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        PokemonInfo register = mProducts.get(position);
+        PokemonInfo register = registers.get(position);
         ((PokedexViewHolder)holder).binding.setPokemon(register);
-        //holder.binding.setIMainActivity((IMainActivity) mContext);
+        ((PokedexViewHolder)holder).binding.setListener((OnPokedexListener) mContext);
 
         ((PokedexViewHolder)holder).binding.executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return mProducts.size();
+        return registers.size();
     }
 
 
     public void refreshList(List<PokemonInfo> products){
-        mProducts.clear();
-        mProducts.addAll(products);
+        registers.clear();
+        registers.addAll(products);
         notifyDataSetChanged();
     }
 }

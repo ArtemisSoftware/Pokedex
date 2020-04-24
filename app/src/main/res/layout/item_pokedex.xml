@@ -10,6 +10,10 @@
             name="pokemon"
             type="com.artemissoftware.pokedex.requests.models.PokedexResults.PokemonInfo"/>
 
+        <variable
+            name="listener"
+            type="com.artemissoftware.pokedex.ui.encyclopedia.adapters.OnPokedexListener"/>
+
     </data>
 
 
@@ -22,11 +26,13 @@
     style="@style/parent.contentLayout">
 
     <androidx.cardview.widget.CardView
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
         app:cardPreventCornerOverlap="true"
-        app:cardElevation="3dp">
+        app:cardElevation="3dp"
+        android:onClick="@{() -> listener.onPokedexClick(pokemon.getId()) }">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -3,6 +3,9 @@
 
     <data>
 
+        <import type="com.artemissoftware.pokedex.R"/>
+        <import type="java.util.List"/>
+
         <variable
             name="pokemon"
             type="com.artemissoftware.pokedex.requests.models.PokedexResults.PokemonInfo"/>
@@ -44,7 +47,9 @@
 
             <ImageView
                 android:maxHeight="90dp"
-                android:src="@drawable/ic_launcher_foreground"
+                app:imageUrl="@{pokemon.getImageUrl()}"
+                app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 style="@style/homeCardImage" />
 
         </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.artemissoftware.pokedex.requests.models;
 
+import com.artemissoftware.pokedex.R;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.DecimalFormat;
@@ -12,6 +13,8 @@ public class PokedexResults {
 
     @SerializedName("results")
     public List<PokemonInfo> pokemons;
+
+    public final int defaultImage = R.drawable.ic_launcher_foreground;
 
 
     public class PokemonInfo{
@@ -37,7 +40,9 @@ public class PokedexResults {
             return "#" + df.format(Integer.parseInt(values[values.length - 1]));
         }
 
-
+        public String getImageUrl(){
+            return "https://pokeres.bastionbot.org/images/pokemon/"+ getId() + ".png";
+        }
 
     }
 

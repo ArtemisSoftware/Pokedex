@@ -10,8 +10,13 @@ import android.os.Bundle;
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityPokedexBinding;
+import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.ui.encyclopedia.adapters.PokedexRecyclerAdapter;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,6 +41,16 @@ public class PokedexActivity extends BaseActivity {
         mainBinding.setLifecycleOwner(this);
         mainBinding.setViewmodel(viewModel);
 
+
+        List<PokedexResults.PokemonInfo> productList = new ArrayList<>();
+
+        //mainBinding.setProducts(productList);
+
+        /*
+        List<PokedexResults.PokemonInfo> productList = new ArrayList<>();
+        ((PokedexRecyclerAdapter) mainBinding.rclPokedex.getAdapter()).refreshList(productList);
+        (mainBinding.rclPokedex.getAdapter()).notifyDataSetChanged();
+*/
         subscribeObservers();
 
         viewModel.searchPokedex();

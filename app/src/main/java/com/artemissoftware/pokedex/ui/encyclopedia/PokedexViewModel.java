@@ -8,6 +8,8 @@ import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.reactivex.SingleObserver;
@@ -26,6 +28,7 @@ public class PokedexViewModel extends ViewModel {
 
 
     public MutableLiveData<String> name;
+    public MutableLiveData<List<PokedexResults.PokemonInfo>> pokemons;
 
 
 
@@ -37,6 +40,7 @@ public class PokedexViewModel extends ViewModel {
         this.disposables = new CompositeDisposable();
 
         pokedexLiveData = new MutableLiveData<>();
+        pokemons = new MutableLiveData<>();
 
         //Timber.d("Pokemon repository: " + this.pokemonRepository);
         //Timber.d("PokedexViewModel is ready");
@@ -70,7 +74,8 @@ public class PokedexViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(PokedexResults pokedexResults) {
-                        pokedexLiveData.setValue(Resource.success(pokedexResults));
+                        //pokedexLiveData.setValue(Resource.success(pokedexResults));
+                        pokemons.setValue(pokedexResults.pokemons);
                         name.setValue(pokedexResults.count);
                     }
 

@@ -48,7 +48,7 @@
             <TextView
                 style="@style/viewParent.headerText.contentText"
                 android:id="@+id/txt_number_results"
-                android:text="@{viewmodel.name, default=0}" />
+                android:text="@{viewmodel.numberPokemons, default=0}" />
 
         </LinearLayout>
 
@@ -57,17 +57,13 @@
     </LinearLayout>
 
 
-    <!--
-products
-    app:pokedex="@{viewmodel.pokemons}"
-    -->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcl_pokedex"
         app:pokedex="@{viewmodel.pokemons}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:scrollbars="vertical"
         android:verticalSpacing="24dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -41,16 +41,6 @@ public class PokedexActivity extends BaseActivity {
         mainBinding.setLifecycleOwner(this);
         mainBinding.setViewmodel(viewModel);
 
-
-        List<PokedexResults.PokemonInfo> productList = new ArrayList<>();
-
-        //mainBinding.setProducts(productList);
-
-        /*
-        List<PokedexResults.PokemonInfo> productList = new ArrayList<>();
-        ((PokedexRecyclerAdapter) mainBinding.rclPokedex.getAdapter()).refreshList(productList);
-        (mainBinding.rclPokedex.getAdapter()).notifyDataSetChanged();
-*/
         subscribeObservers();
 
         viewModel.searchPokedex();

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Pokedex</string>
     <string name="pokedex">Pokedex</string>
+
+
+
+    <string name="key_pokemon_id">key_pokemonId</string>
+
 </resources>

@@ -5,6 +5,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.artemissoftware.pokedex.BaseActivity;
@@ -14,6 +15,7 @@ import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.encyclopedia.adapters.OnPokedexListener;
 import com.artemissoftware.pokedex.ui.encyclopedia.adapters.PokedexRecyclerAdapter;
+import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
 import java.util.ArrayList;
@@ -78,5 +80,11 @@ public class PokedexActivity extends BaseActivity implements OnPokedexListener {
     @Override
     public void onPokedexClick(String id) {
 
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.key_pokemon_id), id);
+
+        Intent intent = new Intent(this, PokemonActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

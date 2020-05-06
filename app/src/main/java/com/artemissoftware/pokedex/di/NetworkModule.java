@@ -1,11 +1,12 @@
 package com.artemissoftware.pokedex.di;
 
 import com.artemissoftware.pokedex.repository.PokemonRepository;
-import com.artemissoftware.pokedex.requests.PokemonApi;
+import com.artemissoftware.pokedex.requests.api.PokemonApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -47,7 +48,8 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(OkHttpClient okHttpClient) {
+    @Named("baseRetrofit")
+    Retrofit provideBaseRetrofit(OkHttpClient okHttpClient) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_URL)
@@ -63,7 +65,25 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    PokemonApi providePokemonApiInterface(Retrofit retrofit) {
+    @Named("detailRetrofit")
+    Retrofit provideDetailRetrofit(OkHttpClient okHttpClient) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiConstants.DETAIL_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        //Timber.d("Providing retrofit: " + retrofit);
+        return retrofit;
+    }
+
+
+
+    @Provides
+    @Singleton
+    PokemonApi providePokemonApiInterface(@Named("baseRetrofit") Retrofit retrofit) {
 
         PokemonApi api = retrofit.create(PokemonApi.class);
 

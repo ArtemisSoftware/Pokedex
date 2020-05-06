@@ -2,7 +2,7 @@ package com.artemissoftware.pokedex.repository;
 
 import androidx.annotation.NonNull;
 
-import com.artemissoftware.pokedex.requests.PokemonApi;
+import com.artemissoftware.pokedex.requests.api.PokemonApi;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.util.ApiConstants;
 

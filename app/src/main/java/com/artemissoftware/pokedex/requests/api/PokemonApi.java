@@ -1,4 +1,4 @@
-package com.artemissoftware.pokedex.requests;
+package com.artemissoftware.pokedex.requests.api;
 
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 

@@ -4,6 +4,7 @@ package com.artemissoftware.pokedex.di;
 import com.artemissoftware.pokedex.MainActivity;
 import com.artemissoftware.pokedex.di.pokemon.PokemonModule;
 import com.artemissoftware.pokedex.di.pokemon.PokemonScope;
+import com.artemissoftware.pokedex.di.pokemon.PokemonViewModelsModule;
 import com.artemissoftware.pokedex.ui.encyclopedia.PokedexActivity;
 import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 
@@ -30,7 +31,7 @@ public abstract class ActivityBuildersModule {
 
     @PokemonScope
     @ContributesAndroidInjector(
-            modules = {/*QuizViewModelsModule.class,*/ PokemonModule.class}
+            modules = { PokemonViewModelsModule.class, PokemonModule.class }
     )
     abstract PokemonActivity contributePokemonActivity();
 

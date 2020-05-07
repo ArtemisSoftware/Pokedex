@@ -6,6 +6,8 @@ import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class PokemonViewModel extends ViewModel {
 
 
@@ -16,8 +18,10 @@ public class PokemonViewModel extends ViewModel {
     public PokemonViewModel(PokemonGlitchApi api){
 
         this.api = api;
-        //Timber.d("PokemonViewModel is working");
-        //Timber.d("auth api: " + this.api);
+
+        Timber.d("auth api: " + this.api);
+        Timber.d("PokemonViewModel is working");
+
     }
 
 }

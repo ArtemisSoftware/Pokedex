@@ -2,33 +2,45 @@ package com.artemissoftware.pokedex.ui.pokemon;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
+import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
-public class PokemonActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+public class PokemonActivity extends BaseActivity {
+
+
+    @Inject
+    ViewModelProviderFactory providerFactory;
+
+    private PokemonViewModel viewModel;
 
 
     private static final int ABOUT_FRAGMENT = 0;
 
-
-
     private ViewPager viewpager_container;
 
-
     private AboutFragment aboutFragment;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon);
+
+
+        viewModel = ViewModelProviders.of(this, providerFactory).get(PokemonViewModel.class);
 
         Bundle bundle = getIntent().getExtras();
 

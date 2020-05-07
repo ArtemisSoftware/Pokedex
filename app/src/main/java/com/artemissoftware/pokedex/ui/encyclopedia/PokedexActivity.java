@@ -27,10 +27,12 @@ public class PokedexActivity extends BaseActivity implements OnPokedexListener {
 
     ActivityPokedexBinding mainBinding;
 
-    private PokedexViewModel viewModel;
-
     @Inject
     ViewModelProviderFactory providerFactory;
+
+    private PokedexViewModel viewModel;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

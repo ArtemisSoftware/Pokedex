@@ -24,6 +24,9 @@ import javax.inject.Inject;
 public class PokemonActivity extends BaseActivity {
 
 
+    ActivityPokemonBinding activityPokemonBinding;
+
+
     @Inject
     ViewModelProviderFactory providerFactory;
 
@@ -32,7 +35,7 @@ public class PokemonActivity extends BaseActivity {
 
     private static final int ABOUT_FRAGMENT = 0;
 
-    private ViewPager viewpager_container;
+    //private ViewPager viewpager_container;
 
     private AboutFragment aboutFragment;
 
@@ -46,14 +49,20 @@ public class PokemonActivity extends BaseActivity {
 
         viewModel = ViewModelProviders.of(this, providerFactory).get(PokemonViewModel.class);
 
-        viewpager_container = findViewById(R.id.viewpager_container);
 
-
-
-        ActivityPokemonBinding activityPokemonBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokemon);
-
+        activityPokemonBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokemon);
         activityPokemonBinding.setLifecycleOwner(this);
         activityPokemonBinding.setViewmodel(viewModel);
+
+
+        final Toolbar toolbar = findViewById(R.id.htab_toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        setupViewPager();
+
 
         subscribeObservers();
 
@@ -81,13 +90,7 @@ public class PokemonActivity extends BaseActivity {
 
 */
 
-        final Toolbar toolbar = findViewById(R.id.htab_toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        setupViewPager();
     }
 
 
@@ -103,12 +106,11 @@ public class PokemonActivity extends BaseActivity {
         //adapter.addFragment(mPhotoFragment);
 
 
-        viewpager_container.setAdapter(adapter);
+        activityPokemonBinding.viewpagerContainer.setAdapter(adapter);
 
-        TabLayout tabLayout = findViewById(R.id.tab);
-        tabLayout.setupWithViewPager(viewpager_container);
+        activityPokemonBinding.tab.setupWithViewPager(activityPokemonBinding.viewpagerContainer);
 
-        tabLayout.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
+        activityPokemonBinding.tab.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
         //tabLayout.getTabAt(1).setText("getString(R.string.tag_fragment_about)");
         //tabLayout.getTabAt(PHOTO_FRAGMENT).setText(getString(R.string.tag_fragment_photo));
 

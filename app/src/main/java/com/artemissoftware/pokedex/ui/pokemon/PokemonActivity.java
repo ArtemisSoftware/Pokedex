@@ -2,6 +2,8 @@ package com.artemissoftware.pokedex.ui.pokemon;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,6 +12,8 @@ import android.widget.TextView;
 
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
+import com.artemissoftware.pokedex.databinding.ActivityPokemonBinding;
+import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -42,15 +46,26 @@ public class PokemonActivity extends BaseActivity {
 
         viewModel = ViewModelProviders.of(this, providerFactory).get(PokemonViewModel.class);
 
+        viewpager_container = findViewById(R.id.viewpager_container);
+
+
+
+        ActivityPokemonBinding activityPokemonBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokemon);
+
+        activityPokemonBinding.setLifecycleOwner(this);
+        activityPokemonBinding.setViewmodel(viewModel);
+
+        subscribeObservers();
+
+
         Bundle bundle = getIntent().getExtras();
 
         String id = "";
 
-        if(bundle != null)
+        if(bundle != null) {
             id = bundle.getString(getString(R.string.key_pokemon_id));
-
-
-        viewpager_container = findViewById(R.id.viewpager_container);
+            viewModel.searchPokemon(id);
+        }
 
 
 
@@ -65,6 +80,13 @@ public class PokemonActivity extends BaseActivity {
         ctl.setTitle("Best Coupons Deals");
 
 */
+
+        final Toolbar toolbar = findViewById(R.id.htab_toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         setupViewPager();
     }
 
@@ -90,6 +112,28 @@ public class PokemonActivity extends BaseActivity {
         //tabLayout.getTabAt(1).setText("getString(R.string.tag_fragment_about)");
         //tabLayout.getTabAt(PHOTO_FRAGMENT).setText(getString(R.string.tag_fragment_photo));
 
+    }
+
+
+
+    private void subscribeObservers() {
+
+        viewModel.observePokemon().observe(this, new Observer<Resource>() {
+            @Override
+            public void onChanged(Resource resource) {
+
+
+                //Timber.d("onChanged: " + resource.toString());
+
+                switch (resource.status){
+
+                    case ERROR:
+
+                        break;
+
+                }
+            }
+        });
     }
 
 

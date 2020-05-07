@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 
+import java.util.List;
+
 import io.reactivex.Single;
 
 public class PokemonRepository {
@@ -17,7 +19,7 @@ public class PokemonRepository {
     }
 
 
-    public Single<PokemonResponse> searchPokemon(String id) {
+    public Single<List<PokemonResponse>> searchPokemon(String id) {
         return api.searchPokemon(id);
     }
 }

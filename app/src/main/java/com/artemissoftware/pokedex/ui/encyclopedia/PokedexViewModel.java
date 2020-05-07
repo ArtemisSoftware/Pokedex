@@ -44,9 +44,6 @@ public class PokedexViewModel extends ViewModel {
 
         //Timber.d("Pokemon repository: " + this.pokemonRepository);
         //Timber.d("PokedexViewModel is ready");
-
-
-
     }
 
 

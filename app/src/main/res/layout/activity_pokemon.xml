@@ -190,194 +190,180 @@
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_content"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <data>
+
+        <import type="com.artemissoftware.pokedex.R"/>
+
+        <variable
+            name="viewmodel"
+            type="com.artemissoftware.pokedex.ui.pokemon.PokemonViewModel"/>
+
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/htab_maincontent"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/htab_appbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:fitsSystemWindows="true"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
-            <!--            Your extra details excluding tablayout. if u want any..-->
-            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/htab_collapse_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                tools:context="com.sweedesi.android.customerapp.Fragments.SweetMartListFragment">
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:titleEnabled="false">
 
-                <ImageView
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_launcher_foreground"
-                    android:scaleType="centerCrop" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_launcher_foreground"
-                    android:scaleType="centerCrop" />
-
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    tools:context="com.sweedesi.android.customerapp.Fragments.SweetMartListFragment">
+                    android:background="@drawable/ic_launcher_background">
 
-
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="?attr/actionBarSize"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        android:fitsSystemWindows="true">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            style="@style/viewParent.headerText"
+                            android:layout_marginStart="72dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@{viewmodel.pokemon.name, default=Name}"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="viewParent.headerText.contentText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@{viewmodel.pokemon.referenceId(), default=id}"
+                            app:layout_constraintStart_toStartOf="@+id/textView"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:scaleType="centerCrop"
+                            app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
+                            app:imageUrl="@{viewmodel.pokemon.getImageUrl()}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.772"
+                            app:layout_constraintStart_toEndOf="@+id/textView"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@{viewmodel.pokemon.species, default=species}"
+                            app:layout_constraintStart_toStartOf="@+id/textView"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                </LinearLayout>
+<!--
+                <ImageView
+                    android:id="@+id/htab_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_launcher_background"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="?attr/actionBarSize">
+
+                    <TextView
+                        style="@style/viewParent.headerText"
+                        android:text="@{viewmodel.pokemon.name, default=Name}" />
+
+                    <TextView
+                        style="viewParent.headerText.contentText"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
-                        android:layout_marginRight="@dimen/activity_horizontal_margin"
-                        android:orientation="vertical">
+                        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+                        android:text="@{viewmodel.pokemon.referenceId(), default=id}"/>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                </LinearLayout>
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                                android:layout_toLeftOf="@+id/txt_reviews"
-                                android:text="Bhagat Mishthan Bhandar"
-                                android:textColor="@color/gradientLightGreen"
-                                android:textSize="@dimen/activity_horizontal_margin"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/txt_reviews"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                                android:text="580 reviews"
-                                android:textColor="@color/gradientLightGreen"
-                                android:textSize="@dimen/activity_horizontal_margin" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.3"
+                    android:background="@color/contentBodyColor"
+                    android:fitsSystemWindows="true"/>
+-->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/htab_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="top"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
 
-                        </RelativeLayout>
 
-                        <View
-                            android:layout_width="100dp"
-                            android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:background="@color/gradientLightGreen" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="jgfjhfjhfhj"
-                                android:textColor="@color/gradientLightGreen"
-                                android:textSize="@dimen/activity_horizontal_margin" />
-
-                            <TextView
-                                android:id="@+id/txt_price"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:text="1000"
-                                android:textColor="@color/gradientLightGreen"
-                                android:textSize="@dimen/activity_horizontal_margin" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                                android:background="@drawable/ic_launcher_foreground" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                                android:text="Bhati enclave, Main queens road, Opp Jharkhand mahadev mandir, Vaishali nagar, Jaipur - 302021"
-                                android:textColor="@color/gradientLightGreen"
-                                android:textSize="@dimen/activity_horizontal_margin" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/gradientLightGreen"
-                app:tabGravity="fill"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/colorPrimaryDark"
-                app:tabTextAppearance="@style/viewParent.headerText.HomeCardTitle"
-                app:tabTextColor="@color/gradientLightOrange" />
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/gradientLightBlue"
-                app:layout_collapseMode="parallax"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:tabIndicatorColor="@color/gradientViolet"
+                app:tabSelectedTextColor="@color/gradientLightYellow"
+                app:tabTextColor="@color/gradientLightOrange"/>
+        </com.google.android.material.appbar.AppBarLayout>
 
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </androidx.core.widget.NestedScrollView>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewpager_container"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

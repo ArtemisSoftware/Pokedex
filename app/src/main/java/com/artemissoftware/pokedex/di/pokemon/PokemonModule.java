@@ -28,7 +28,6 @@ public class PokemonModule {
 
     @PokemonScope
     @Provides
-    @Singleton
     PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface) {
 
         PokemonRepository repository = new PokemonRepository(apiInterface);

@@ -2,9 +2,11 @@ package com.artemissoftware.pokedex.requests.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PokemonResponse {
+
 
     @SerializedName("number")
     public String number;
@@ -34,12 +36,26 @@ public class PokemonResponse {
 
 
     @SerializedName("family")
-    public List<Family> family;
+    public Family family;
 
 
-    public class Family{
+
+    public String referenceId(){
+
+        DecimalFormat df = new DecimalFormat("000");
+        return "#" + df.format(Integer.parseInt(number));
+    }
+
+    public String getImageUrl(){
+        return "https://pokeres.bastionbot.org/images/pokemon/"+ number + ".png";
+    }
+
+
+
+    public class Family {
 
         @SerializedName("evolutionLine")
         public List<String> evolutionLine;
     }
+
 }

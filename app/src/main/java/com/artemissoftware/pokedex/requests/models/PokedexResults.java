@@ -37,7 +37,7 @@ public class PokedexResults {
 
             DecimalFormat df = new DecimalFormat("000");
             String values [] = url.split("/");
-            return "#" + df.format(Integer.parseInt(values[values.length - 1]));
+            return "#" + df.format(Integer.parseInt(getId()));
         }
 
         public String getImageUrl(){

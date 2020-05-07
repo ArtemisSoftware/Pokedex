@@ -2,7 +2,10 @@ package com.artemissoftware.pokedex.di;
 
 
 import com.artemissoftware.pokedex.MainActivity;
+import com.artemissoftware.pokedex.di.pokemon.PokemonModule;
+import com.artemissoftware.pokedex.di.pokemon.PokemonScope;
 import com.artemissoftware.pokedex.ui.encyclopedia.PokedexActivity;
+import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -23,5 +26,12 @@ public abstract class ActivityBuildersModule {
             modules = {/*QuizViewModelsModule.class, QuizModule.class*/}
     )
     abstract PokedexActivity contributePokedexActivity();
+
+
+    @PokemonScope
+    @ContributesAndroidInjector(
+            modules = {/*QuizViewModelsModule.class,*/ PokemonModule.class}
+    )
+    abstract PokemonActivity contributePokemonActivity();
 
 }

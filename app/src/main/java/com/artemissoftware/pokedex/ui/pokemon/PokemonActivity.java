@@ -8,12 +8,21 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.artemissoftware.pokedex.R;
+import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
 
 public class PokemonActivity extends AppCompatActivity {
 
 
+    private static final int ABOUT_FRAGMENT = 0;
+
+
+
     private ViewPager viewpager_container;
+
+
+    private AboutFragment aboutFragment;
 
 
     @Override
@@ -49,13 +58,15 @@ public class PokemonActivity extends AppCompatActivity {
 
 
     private void setupViewPager(){
-        /*
-        MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
-        mGalleryFragment = new GalleryFragment();
-        mPhotoFragment = new PhotoFragment();
 
-        adapter.addFragment(mGalleryFragment);
-        adapter.addFragment(mPhotoFragment);
+        InfoPagerAdapter adapter = new InfoPagerAdapter(getSupportFragmentManager());
+
+        aboutFragment = new AboutFragment();
+        //mPhotoFragment = new PhotoFragment();
+
+        adapter.addFragment(aboutFragment);
+        //adapter.addFragment(aboutFragment);
+        //adapter.addFragment(mPhotoFragment);
 
 
         viewpager_container.setAdapter(adapter);
@@ -63,9 +74,10 @@ public class PokemonActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab);
         tabLayout.setupWithViewPager(viewpager_container);
 
-        tabLayout.getTabAt(GALLERY_FRAGMENT).setText(getString(R.string.tag_fragment_gallery));
-        tabLayout.getTabAt(PHOTO_FRAGMENT).setText(getString(R.string.tag_fragment_photo));
-        */
+        tabLayout.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
+        //tabLayout.getTabAt(1).setText("getString(R.string.tag_fragment_about)");
+        //tabLayout.getTabAt(PHOTO_FRAGMENT).setText(getString(R.string.tag_fragment_photo));
+
     }
 
 

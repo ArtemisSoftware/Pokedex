@@ -3,7 +3,10 @@
     <string name="pokedex">Pokedex</string>
 
 
-
     <string name="key_pokemon_id">key_pokemonId</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tag_fragment_about">About</string>
 
 </resources>

@@ -1,6 +1,6 @@
 package com.artemissoftware.pokedex.di;
 
-import com.artemissoftware.pokedex.repository.PokemonRepository;
+import com.artemissoftware.pokedex.repository.PokedexRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
@@ -95,9 +95,9 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    PokemonRepository provideRepository(PokemonApi apiInterface) {
+    PokedexRepository provideRepository(PokemonApi apiInterface) {
 
-        PokemonRepository repository = new PokemonRepository(apiInterface);
+        PokedexRepository repository = new PokedexRepository(apiInterface);
 
         //Timber.d("Providing repository: " + repository);
         return repository;

@@ -1,8 +1,10 @@
 package com.artemissoftware.pokedex.di.pokemon;
 
+import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,6 +24,17 @@ public class PokemonModule {
         Timber.d("Providing PokemonGlitchApi: " + api);
         return api;
 
+    }
+
+    @PokemonScope
+    @Provides
+    @Singleton
+    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface) {
+
+        PokemonRepository repository = new PokemonRepository(apiInterface);
+
+        Timber.d("Providing PokemonRepository: " + repository);
+        return repository;
     }
 
 }

@@ -3,7 +3,7 @@ package com.artemissoftware.pokedex.ui.encyclopedia;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.artemissoftware.pokedex.repository.PokemonRepository;
+import com.artemissoftware.pokedex.repository.PokedexRepository;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.Resource;
 
@@ -21,7 +21,7 @@ public class PokedexViewModel extends ViewModel {
 
     private final CompositeDisposable disposables;
 
-    private final PokemonRepository pokemonRepository;
+    private final PokedexRepository pokemonRepository;
 
     private MutableLiveData<Resource> pokedexLiveData;
 
@@ -33,7 +33,7 @@ public class PokedexViewModel extends ViewModel {
 
 
     @Inject
-    public PokedexViewModel(PokemonRepository pokemonRepository) {
+    public PokedexViewModel(PokedexRepository pokemonRepository) {
 
         this.pokemonRepository = pokemonRepository;
         this.disposables = new CompositeDisposable();

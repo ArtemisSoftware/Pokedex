@@ -2,26 +2,22 @@ package com.artemissoftware.pokedex.repository;
 
 import androidx.annotation.NonNull;
 
-import com.artemissoftware.pokedex.requests.api.PokemonApi;
-import com.artemissoftware.pokedex.requests.models.PokedexResults;
-import com.artemissoftware.pokedex.util.ApiConstants;
+import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
+import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 
 import io.reactivex.Single;
 
 public class PokemonRepository {
 
+    private PokemonGlitchApi api;
 
-    private PokemonApi api;
 
-
-    public PokemonRepository(@NonNull PokemonApi api) {
+    public PokemonRepository(@NonNull PokemonGlitchApi api) {
         this.api = api;
     }
 
 
-    public Single<PokedexResults> searchPokedex() {
-        return api.searchPokedex(ApiConstants.API_RESULT_OFFSET, ApiConstants.API_RESULT_LIMIT);
+    public Single<PokemonResponse> searchPokemon(String id) {
+        return api.searchPokemon(id);
     }
-
-
 }

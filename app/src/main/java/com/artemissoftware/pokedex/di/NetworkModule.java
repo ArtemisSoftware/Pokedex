@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 @Module
 public class NetworkModule {
@@ -39,7 +40,7 @@ public class NetworkModule {
                 .build();
 
 
-        //Timber.d("Providing OkHttpClient: " + client);
+        Timber.d("Providing OkHttpClient: " + client);
         return client;
     }
 
@@ -75,7 +76,7 @@ public class NetworkModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //Timber.d("Providing retrofit: " + retrofit);
+        Timber.d("Providing Detailretrofit: " + retrofit);
         return retrofit;
     }
 

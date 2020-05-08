@@ -22,7 +22,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private Context mContext;
 
     public NotesRecyclerAdapter(Context context, List<Note> items) {
-        items = items;
+        this.items = items;
         mContext = context;
     }
 

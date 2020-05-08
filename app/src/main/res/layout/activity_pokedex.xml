@@ -49,6 +49,7 @@
             <TextView
                 style="@style/viewParent.headerText.contentText"
                 android:id="@+id/txt_number_results"
+                android:layout_marginLeft="5dp"
                 android:text="@{viewmodel.numberPokemons, default=0}" />
 
         </LinearLayout>

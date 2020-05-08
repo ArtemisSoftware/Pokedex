@@ -13,6 +13,14 @@
     </data>
 
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+
     <com.google.android.material.card.MaterialCardView
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -36,13 +44,11 @@
 
             <TextView
                 style="@style/profileText"
+                android:text="@{note.getDescription(), default=note}"
                 android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9"
@@ -51,4 +57,5 @@
 
 
     </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 </layout>

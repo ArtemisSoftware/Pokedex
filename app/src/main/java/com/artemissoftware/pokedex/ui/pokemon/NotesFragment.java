@@ -86,6 +86,7 @@ public class NotesFragment extends Fragment {
 
     public void update(List<Note> items) {
 
+        notesBinding.txtNumberResults.setText(items.size() + "");
         notesBinding.setNotes(items);
     }
 

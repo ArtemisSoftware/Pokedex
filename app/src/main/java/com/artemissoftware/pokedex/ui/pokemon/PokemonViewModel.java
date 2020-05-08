@@ -7,6 +7,7 @@ import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
 import java.util.List;
 
@@ -81,6 +82,11 @@ public class PokemonViewModel extends ViewModel {
                     }
                 });
 
+    }
+
+
+    public List<Note> getNotes(){
+        return repository.getNotes();
     }
 
 

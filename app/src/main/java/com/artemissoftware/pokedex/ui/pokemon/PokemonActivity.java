@@ -129,6 +129,7 @@ public class PokemonActivity extends BaseActivity {
                     case SUCCESS:
 
                         ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).update((PokemonResponse) resource.data);
+                        ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).updateNotes(viewModel.getNotes());
                         break;
 
 

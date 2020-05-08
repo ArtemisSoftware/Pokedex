@@ -53,8 +53,8 @@
 
                     <TextView
                         style="@style/profileTitle"
-                        android:id="@+id/txt_number_results"
-                        android:text="{viewmodel.numberPokemons, default=0}" />
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/txt_number_results" />
 
                 </LinearLayout>
 

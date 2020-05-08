@@ -20,8 +20,8 @@ public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private List<PokemonInfo> registers = new ArrayList<>();
     private Context mContext;
 
-    public PokedexRecyclerAdapter(Context context, List<PokemonInfo> products) {
-        registers = products;
+    public PokedexRecyclerAdapter(Context context, List<PokemonInfo> items) {
+        registers = items;
         mContext = context;
     }
 

@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="note"
+            type="com.artemissoftware.pokedex.ui.pokemon.models.Note" />
 
     </data>
 

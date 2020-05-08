@@ -44,7 +44,7 @@
 
             <TextView
                 style="@style/viewParent.headerText.contentText"
-                android:text="Available pokemons: " />
+                android:text="@string/availablePokemons" />
 
             <TextView
                 style="@style/viewParent.headerText.contentText"

@@ -38,7 +38,7 @@ public class InfoPagerAdapter extends FragmentPagerAdapter {
 
     public void update(PokemonResponse data) {
 
-        ((AboutFragment) mFragmentList.get(0)).onButtonPressed(data);
+        ((AboutFragment) mFragmentList.get(0)).update(data);
     }
 }
 

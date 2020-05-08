@@ -35,11 +35,10 @@ public class PokemonActivity extends BaseActivity {
 
 
     private static final int ABOUT_FRAGMENT = 0;
-
-    //private ViewPager viewpager_container;
-
     private AboutFragment aboutFragment;
 
+    private static final int NOTES_FRAGMENT = 1;
+    private NotesFragment notesFragment;
 
 
     @Override

@@ -17,4 +17,9 @@
 
     <string name="evolutionLine">Evolution Line</string>
     <string name="sprite">Sprite</string>
+
+
+    <string name="availablePokemons">Available pokemons: </string>
+    <string name="numberNotes">Number of notes: </string>
+    <string name="notes">Notes</string>
 </resources>

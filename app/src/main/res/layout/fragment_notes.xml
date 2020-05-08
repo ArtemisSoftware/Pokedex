@@ -6,7 +6,12 @@
 
     <data>
 
+        <import type="com.artemissoftware.pokedex.ui.pokemon.models.Note"/>
         <import type="java.util.List"/>
+
+        <variable
+            name="notes"
+            type="List&lt;Note>"/>
 
     </data>
 
@@ -61,6 +66,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcl_notes"
+                app:notes="@{notes}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"

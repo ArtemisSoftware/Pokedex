@@ -11,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.artemissoftware.pokedex.R;
+import com.artemissoftware.pokedex.databinding.FragmentNotesBinding;
+import com.artemissoftware.pokedex.ui.pokemon.models.Note;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +25,13 @@ import com.artemissoftware.pokedex.R;
  * create an instance of this fragment.
  */
 public class NotesFragment extends Fragment {
+
+
+
+    FragmentNotesBinding notesBinding;
+
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,11 +75,22 @@ public class NotesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false);
+
+        notesBinding = FragmentNotesBinding.inflate(inflater);
+
+        return notesBinding.getRoot();
     }
+
+
+    public void update(List<Note> items) {
+
+        notesBinding.setNotes(items);
+    }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

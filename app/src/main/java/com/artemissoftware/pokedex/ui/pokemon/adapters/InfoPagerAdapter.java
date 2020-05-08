@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.artemissoftware.pokedex.requests.models.PokemonResponse;
+import com.artemissoftware.pokedex.ui.pokemon.AboutFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +36,9 @@ public class InfoPagerAdapter extends FragmentPagerAdapter {
         return mFragmentList.size();
     }
 
+    public void update(PokemonResponse data) {
+
+        ((AboutFragment) mFragmentList.get(0)).onButtonPressed(data);
+    }
 }
 

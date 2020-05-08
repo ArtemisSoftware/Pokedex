@@ -2,7 +2,6 @@ package com.artemissoftware.pokedex.databinding;
 
 import androidx.databinding.BindingAdapter;
 
-import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 
 import java.util.List;
 

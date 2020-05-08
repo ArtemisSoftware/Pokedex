@@ -72,6 +72,7 @@ public class PokemonViewModel extends ViewModel {
                     public void onSuccess(List<PokemonResponse> pokemonResponse) {
 
                         pokemon.setValue(pokemonResponse.get(0));
+                        resourceLiveData.setValue(Resource.success(pokemonResponse.get(0)));
                     }
 
                     @Override

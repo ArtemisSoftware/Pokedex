@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityPokemonBinding;
+import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
@@ -128,6 +129,12 @@ public class PokemonActivity extends BaseActivity {
                 //Timber.d("onChanged: " + resource.toString());
 
                 switch (resource.status){
+
+                    case SUCCESS:
+
+                        ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).update((PokemonResponse) resource.data);
+                        break;
+
 
                     case ERROR:
 

@@ -99,11 +99,10 @@ public class PokemonActivity extends BaseActivity {
         InfoPagerAdapter adapter = new InfoPagerAdapter(getSupportFragmentManager());
 
         aboutFragment = new AboutFragment();
-        //mPhotoFragment = new PhotoFragment();
+        notesFragment = new NotesFragment();
 
         adapter.addFragment(aboutFragment);
-        //adapter.addFragment(aboutFragment);
-        //adapter.addFragment(mPhotoFragment);
+        adapter.addFragment(notesFragment);
 
 
         activityPokemonBinding.viewpagerContainer.setAdapter(adapter);
@@ -111,9 +110,7 @@ public class PokemonActivity extends BaseActivity {
         activityPokemonBinding.tab.setupWithViewPager(activityPokemonBinding.viewpagerContainer);
 
         activityPokemonBinding.tab.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
-        //tabLayout.getTabAt(1).setText("getString(R.string.tag_fragment_about)");
-        //tabLayout.getTabAt(PHOTO_FRAGMENT).setText(getString(R.string.tag_fragment_photo));
-
+        activityPokemonBinding.tab.getTabAt(NOTES_FRAGMENT).setText(getString(R.string.tag_fragment_notes));
     }
 
 

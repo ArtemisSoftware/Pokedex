@@ -14,7 +14,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.pokemon.NotesFragment">
+        tools:context=".ui.pokemon.NotesFragment"
+        android:padding="40dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,10 +35,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    style="@style/viewParent.headerText"
-                    android:text="@string/pokedex"/>
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,11 +43,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/viewParent.headerText.contentText"
+                        style="@style/profileTitle"
                         android:text="@string/numberNotes" />
 
                     <TextView
-                        style="@style/viewParent.headerText.contentText"
+                        style="@style/profileTitle"
                         android:id="@+id/txt_number_results"
                         android:text="{viewmodel.numberPokemons, default=0}" />
 

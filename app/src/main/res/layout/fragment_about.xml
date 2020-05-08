@@ -2,9 +2,12 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.artemissoftware.pokedex.R"/>
 
         <variable
             name="pokemon"
@@ -14,61 +17,178 @@
     </data>
 
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.pokemon.AboutFragment"
-    android:padding="20dp">
-
-
-
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".ui.pokemon.AboutFragment"
+        android:padding="40dp">
 
-        <!--  Description   -->
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/id_titleDescription_TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:lineSpacingExtra="5dp"
-                android:lineSpacingMultiplier="1.5"
-                android:textColor="@color/color_secondary_text"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/id_bodyDescription_TextView"
-                android:lineSpacingExtra="5dp"
-                android:lineSpacingMultiplier="0.9"
-                android:layout_below="@+id/id_titleDescription_TextView"
+            <!--  Description   -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:textColor="@color/color_third_text"
-                android:gravity="left"
-                android:text="@{pokemon.description, default=description}"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="12dp"
-                android:minHeight="50dp"
-                android:textSize="16sp"
-                android:layout_height="wrap_content" />
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
 
-        </RelativeLayout>
+                <TextView
+                    style="@style/profileTitle"
+                    android:text="@string/description"/>
 
+                <TextView
+                    style="@style/profileText"
+                    android:text="@{pokemon.description, default=description}"/>
 
-
-    </LinearLayout>
+            </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/profileTitle"
+                    android:text="@string/generation"/>
+
+                <TextView
+                    style="@style/profileText"
+                    android:text="@{pokemon.generation, default=generation}"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                app:cardElevation="0.3dp"
+                app:cardBackgroundColor="@color/colorPrimary">
 
 
-</FrameLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        style="@style/profileTitle"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/height"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        style="@style/profileTitle"
+                        android:layout_marginStart="120dp"
+                        android:text="@string/Weight"
+                        app:layout_constraintStart_toEndOf="@+id/textView5"
+                        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        style="@style/profileText"
+                        android:layout_marginBottom="8dp"
+                        android:text="@{pokemon.height, default=height}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView5"
+                        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        style="@style/profileText"
+                        android:text="@{pokemon.weight, default=weight}"
+                        app:layout_constraintStart_toStartOf="@+id/textView6"
+                        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="41dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/profileTitle"
+                    android:text="@string/evolutionLine"/>
+
+
+                <me.gujun.android.taggroup.TagGroup
+                    android:id="@+id/tag_group"
+                    app:tags="@{pokemon.family.evolutionLine}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:fontFamily="sans-serif-condensed"
+                    app:atg_horizontalSpacing="10dp"
+                    app:atg_textSize="18dp"
+                    android:layout_marginTop="18dp"
+                    style="@style/TagGroup.Beauty_Red.Inverse" />
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/profileTitle"
+                    android:text="@string/sprite"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp">
+
+                    <ImageView
+                        style="@style/gameSprite"
+                        app:imageUrl="@{pokemon.getGameSpriteFront()}"
+                        app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}" />
+
+                    <ImageView
+                        style="@style/gameSprite"
+                        app:imageUrl="@{pokemon.getGameSpriteBack()}"
+                        app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
+                        android:layout_marginLeft="10dp" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
 </layout>
 
 <!--

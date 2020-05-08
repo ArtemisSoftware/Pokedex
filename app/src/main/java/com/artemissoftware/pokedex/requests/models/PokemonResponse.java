@@ -38,6 +38,8 @@ public class PokemonResponse {
     @SerializedName("family")
     public Family family;
 
+    @SerializedName("sprite")
+    public String sprite;
 
 
     public String referenceId(){
@@ -46,10 +48,13 @@ public class PokemonResponse {
         return "#" + df.format(Integer.parseInt(number));
     }
 
-    public String getImageUrl(){
-        return "https://pokeres.bastionbot.org/images/pokemon/"+ number + ".png";
+    public String getGameSpriteBack(){
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/"+ number + ".png";
     }
 
+    public String getGameSpriteFront(){
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ number + ".png";
+    }
 
 
     public class Family {

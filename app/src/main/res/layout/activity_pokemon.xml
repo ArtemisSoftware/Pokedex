@@ -272,7 +272,7 @@
                             android:layout_marginBottom="16dp"
                             android:scaleType="centerCrop"
                             app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
-                            app:imageUrl="@{viewmodel.pokemon.getImageUrl()}"
+                            app:imageUrl="@{viewmodel.pokemon.sprite}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.772"
@@ -291,7 +291,7 @@
 
                         <me.gujun.android.taggroup.TagGroup
                             android:id="@+id/tag_group"
-                            app:tags="@{viewmodel.pokemon.family.evolutionLine}"
+                            app:tags="@{viewmodel.pokemon.types}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView3"

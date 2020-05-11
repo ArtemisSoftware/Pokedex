@@ -8,11 +8,20 @@
     <data>
 
         <import type="com.artemissoftware.pokedex.R"/>
+        <import type="com.sackcentury.shinebuttonlib.ShineButton"/>
 
         <variable
             name="pokemon"
             type="com.artemissoftware.pokedex.requests.models.PokemonResponse"/>
 
+        <variable
+            name="fragment"
+            type="com.artemissoftware.pokedex.ui.pokemon.AboutFragment"/>
+
+
+        <variable
+            name="listener"
+            type="com.artemissoftware.pokedex.ui.pokemon.AboutFragment.OnLikeListener"/>
 
     </data>
 
@@ -198,9 +207,9 @@
                 <com.sackcentury.shinebuttonlib.ShineButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="18dp"
                     android:src="@android:color/darker_gray"
-                    android:id="@+id/po_image1"
+                    android:id="@+id/btn_favourite"
                     app:btn_color="@android:color/darker_gray"
                     app:btn_fill_color="#FFD700"
                     app:allow_random_color="false"
@@ -213,8 +222,10 @@
                     app:shine_distance_multiple="1.5"
                     app:small_shine_color="#CC9999"
                     app:shine_count="15"
-                    app:siShape="@raw/star"/>
+                    app:siShape="@raw/star"
+                    android:onClick="@{(view) -> listener.saveFourite(((ShineButton)view).isChecked)}"/>
 
+                <!-- "@{(view) -> fragment.setFavourite(((ShineButton)view).isChecked)}" -->
 
             </LinearLayout>
 

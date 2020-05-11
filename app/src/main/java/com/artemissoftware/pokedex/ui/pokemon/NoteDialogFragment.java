@@ -101,10 +101,13 @@ public class NoteDialogFragment extends DialogFragment {
         else {
             throw new RuntimeException(context.toString() + " must implement NoteDialogListener");
         }
-
     }
 
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 
 
     public interface NoteDialogListener {

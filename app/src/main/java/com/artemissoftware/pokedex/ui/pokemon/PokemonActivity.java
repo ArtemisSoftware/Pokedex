@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import javax.inject.Inject;
 
-public class PokemonActivity extends BaseActivity implements OnPokemonListener, NoteDialogFragment.NoteDialogListener{
+public class PokemonActivity extends BaseActivity implements OnPokemonListener, NoteDialogFragment.NoteDialogListener, AboutFragment.OnLikeListener{
 
 
     ActivityPokemonBinding activityPokemonBinding;
@@ -146,8 +146,9 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
 
 
     @Override
-    public void setFavourite() {
+    public void setFavourite(String number) {
 
+        //
     }
 
     @Override
@@ -159,6 +160,11 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
 
     @Override
     public void saveNote(String note) {
+        //save note
+    }
+
+    @Override
+    public void saveFourite(boolean checked) {
 
     }
 }

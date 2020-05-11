@@ -18,15 +18,15 @@ import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AboutFragment.OnFragmentInteractionListener} interface
+ * {@link AboutFragment.OnLikeListener} interface
  * to handle interaction events.
  * Use the {@link AboutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AboutFragment extends Fragment {
 
-    FragmentAboutBinding aboutBinding;
-
+    private FragmentAboutBinding aboutBinding;
+    private OnLikeListener listener;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +37,6 @@ public class AboutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
 
     public AboutFragment() {
         // Required empty public constructor
@@ -74,6 +73,8 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         aboutBinding = FragmentAboutBinding.inflate(inflater);
+        aboutBinding.setFragment(this);
+        aboutBinding.setListener(listener);
         return aboutBinding.getRoot();
     }
 
@@ -85,38 +86,28 @@ public class AboutFragment extends Fragment {
 
 
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /*
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+
+        if (context instanceof OnLikeListener) {
+            listener = (OnLikeListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnLikeListener");
         }
-        */
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+
+    public interface OnLikeListener {
+        void saveFourite(boolean checked);
     }
+
+
 }

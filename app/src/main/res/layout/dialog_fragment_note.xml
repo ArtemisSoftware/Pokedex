@@ -5,43 +5,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
-
     <LinearLayout
-        android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/profileTitle"
+                android:text="@string/pokemon"/>
+
+            <TextView
+                style="@style/profileText"
+                android:id="@+id/txt_name"/>
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
             style="@style/profileTitle"
-            android:text="@string/pokemon"/>
+            android:hint="@string/note"
+            android:layout_width="match_parent"
+            android:layout_marginTop="22dp"
+            app:errorEnabled="true">
 
-        <TextView
-            style="@style/profileText"
-            android:id="@+id/txt_name"/>
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/editText"
+                android:id="@+id/txt_inp_note"
+                android:gravity="top|left"
+                android:lines="5"
+                android:maxLines="5"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
     </LinearLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/profileTitle"
-        android:hint="@string/note"
-        android:layout_width="match_parent"
-        android:layout_marginTop="22dp"
-        app:errorEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            style="@style/editText"
-            android:id="@+id/txt_inp_note"
-            android:gravity="top|left"
-            android:lines="5"
-            android:maxLines="5"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-</LinearLayout>
 </layout>

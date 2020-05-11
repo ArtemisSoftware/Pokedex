@@ -100,4 +100,13 @@
     </style>
 
 
+
+
+    <style name="editText" parent="parent">
+        <item name="android:textColor">@color/color_third_text</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+
 </resources>

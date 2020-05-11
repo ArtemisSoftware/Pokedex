@@ -24,4 +24,6 @@
     <string name="availablePokemons">Available pokemons: </string>
     <string name="numberNotes">Number of notes: </string>
     <string name="notes">Notes</string>
+    <string name="note">Note</string>
+    <string name="pokemon">Pokemon</string>
 </resources>

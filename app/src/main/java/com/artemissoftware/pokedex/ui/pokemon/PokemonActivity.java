@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import javax.inject.Inject;
 
-public class PokemonActivity extends BaseActivity {
+public class PokemonActivity extends BaseActivity implements OnPokemonListener{
 
 
     ActivityPokemonBinding activityPokemonBinding;
@@ -111,6 +111,11 @@ public class PokemonActivity extends BaseActivity {
 
         activityPokemonBinding.tab.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
         activityPokemonBinding.tab.getTabAt(NOTES_FRAGMENT).setText(getString(R.string.tag_fragment_notes));
+
+
+        NoteDialogFragment exampleDialog = new NoteDialogFragment();
+        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+
     }
 
 
@@ -143,4 +148,13 @@ public class PokemonActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void setFavourite() {
+
+    }
+
+    @Override
+    public void showNoteDialog() {
+
+    }
 }

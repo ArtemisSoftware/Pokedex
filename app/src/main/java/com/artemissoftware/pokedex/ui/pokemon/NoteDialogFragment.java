@@ -7,22 +7,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
 import com.artemissoftware.pokedex.R;
+import com.artemissoftware.pokedex.databinding.DialogFragmentNoteBinding;
 
 public class NoteDialogFragment extends DialogFragment {
+
+
+    private static final String ARG_NAME = "name";
+    private static final String ARG_NOTE = "note";
 
 
     public NoteDialogFragment() {
         // Empty constructor required for DialogFragment
     }
 
-    public static NoteDialogFragment newInstance(String title) {
+
+    public static NoteDialogFragment newInstance(String name) {
         NoteDialogFragment frag = new NoteDialogFragment();
-        //Bundle args = new Bundle();
-        //args.putString("title", title);
-        //frag.setArguments(args);
+        Bundle args = new Bundle();
+        args.putString(ARG_NAME, name);
+        frag.setArguments(args);
         return frag;
     }
 
@@ -30,17 +37,15 @@ public class NoteDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_fragment_note, null);
+        DialogFragmentNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_fragment_note, null, false);
+
+        initDialog(binding);
 
 
-        String title = "Title";//getArguments().getString("title");
+        String title = getActivity().getString(R.string.note);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setTitle(title);
-        alertDialogBuilder.setMessage("Are you sure?");
-
-        alertDialogBuilder.setView(view);
-
+        alertDialogBuilder.setView(binding.getRoot());
 
         alertDialogBuilder.setPositiveButton("OK",  new DialogInterface.OnClickListener() {
             @Override
@@ -59,5 +64,15 @@ public class NoteDialogFragment extends DialogFragment {
         });
 
         return alertDialogBuilder.create();
+    }
+
+
+    private void initDialog(DialogFragmentNoteBinding binding) {
+
+        if (getArguments() != null) {
+            binding.txtName.setText(getArguments().getString(ARG_NAME));
+            //mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
     }
 }

@@ -51,6 +51,9 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener{
 
 
         activityPokemonBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokemon);
+
+
+        activityPokemonBinding.setListener(this);
         activityPokemonBinding.setLifecycleOwner(this);
         activityPokemonBinding.setViewmodel(viewModel);
 
@@ -112,10 +115,6 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener{
         activityPokemonBinding.tab.getTabAt(ABOUT_FRAGMENT).setText(getString(R.string.tag_fragment_about));
         activityPokemonBinding.tab.getTabAt(NOTES_FRAGMENT).setText(getString(R.string.tag_fragment_notes));
 
-
-        NoteDialogFragment exampleDialog = new NoteDialogFragment();
-        exampleDialog.show(getSupportFragmentManager(), "example dialog");
-
     }
 
 
@@ -154,7 +153,9 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener{
     }
 
     @Override
-    public void showNoteDialog() {
+    public void showNoteDialog(PokemonResponse response) {
 
+        NoteDialogFragment dialog = NoteDialogFragment.newInstance(response.name);
+        dialog.show(getSupportFragmentManager(), getString(R.string.note));
     }
 }

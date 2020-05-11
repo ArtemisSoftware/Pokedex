@@ -5,6 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="note"
+            type="com.artemissoftware.pokedex.ui.pokemon.models.Note" />
+    </data>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -37,6 +43,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/editText"
                 android:id="@+id/txt_inp_note"
+                android:text="@{note.getDescription(), default=note}"
                 android:gravity="top|left"
                 android:lines="5"
                 android:maxLines="5"/>

@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.DialogFragmentNoteBinding;
+import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
 public class NoteDialogFragment extends DialogFragment {
 
@@ -37,6 +38,17 @@ public class NoteDialogFragment extends DialogFragment {
         frag.setArguments(args);
         return frag;
     }
+
+    public static NoteDialogFragment newInstance(String name, Note note) {
+        NoteDialogFragment frag = new NoteDialogFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_NAME, name);
+        args.putParcelable(ARG_NOTE, note);
+        frag.setArguments(args);
+        return frag;
+    }
+
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -75,7 +87,11 @@ public class NoteDialogFragment extends DialogFragment {
 
         if (getArguments() != null) {
             binding.txtName.setText(getArguments().getString(ARG_NAME));
-            //mParam2 = getArguments().getString(ARG_PARAM2);
+
+            if(getArguments().containsKey(ARG_NOTE) == true){
+
+                binding.setNote(getArguments().getParcelable(ARG_NOTE));
+            }
         }
     }
 

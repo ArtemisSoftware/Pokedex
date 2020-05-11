@@ -16,6 +16,7 @@ import com.artemissoftware.pokedex.databinding.ActivityPokemonBinding;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
+import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -145,16 +146,18 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
     }
 
 
-    @Override
-    public void setFavourite(String number) {
-
-        //
-    }
 
     @Override
     public void showNoteDialog(PokemonResponse response) {
 
         NoteDialogFragment dialog = NoteDialogFragment.newInstance(response.name);
+        dialog.show(getSupportFragmentManager(), getString(R.string.note));
+    }
+
+    @Override
+    public void showNoteDialog(Note note) {
+
+        NoteDialogFragment dialog = NoteDialogFragment.newInstance(viewModel.pokemon.getValue().name, note);
         dialog.show(getSupportFragmentManager(), getString(R.string.note));
     }
 
@@ -166,5 +169,12 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
     @Override
     public void saveFourite(boolean checked) {
 
+        if(checked == true) {
+
+            //save favourite
+        }
+        else{
+            //delete favourite
+        }
     }
 }

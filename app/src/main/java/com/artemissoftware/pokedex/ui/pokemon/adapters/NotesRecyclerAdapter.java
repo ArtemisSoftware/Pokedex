@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ItemNoteBinding;
+import com.artemissoftware.pokedex.ui.pokemon.OnPokemonListener;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
 
     private List<Note> items = new ArrayList<>();
-    private Context mContext;
+    private Context context;
 
     public NotesRecyclerAdapter(Context context, List<Note> items) {
         this.items = items;
-        mContext = context;
+        this.context = context;
     }
 
 
@@ -31,7 +32,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        ItemNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.item_note, parent, false);
+        ItemNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_note, parent, false);
         return new NoteViewHolder(binding.getRoot());
     }
 
@@ -40,7 +41,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         Note register = items.get(position);
         ((NoteViewHolder)holder).binding.setNote(register);
-        //((PokedexViewHolder)holder).binding.setListener((OnPokedexListener) mContext);
+        ((NoteViewHolder)holder).binding.setListener((OnPokemonListener) context);
 
         ((NoteViewHolder)holder).binding.executePendingBindings();
 

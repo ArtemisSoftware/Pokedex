@@ -18,11 +18,11 @@ import java.util.List;
 public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<PokemonInfo> registers = new ArrayList<>();
-    private Context mContext;
+    private Context context;
 
     public PokedexRecyclerAdapter(Context context, List<PokemonInfo> items) {
         registers = items;
-        mContext = context;
+        this.context = context;
     }
 
 
@@ -30,7 +30,7 @@ public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public PokedexViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        ItemPokedexBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.item_pokedex, parent, false);
+        ItemPokedexBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_pokedex, parent, false);
         return new PokedexViewHolder(binding.getRoot());
     }
 
@@ -41,7 +41,7 @@ public class PokedexRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         PokemonInfo register = registers.get(position);
         ((PokedexViewHolder)holder).binding.setPokemon(register);
-        ((PokedexViewHolder)holder).binding.setListener((OnPokedexListener) mContext);
+        ((PokedexViewHolder)holder).binding.setListener((OnPokedexListener) context);
 
         ((PokedexViewHolder)holder).binding.executePendingBindings();
     }

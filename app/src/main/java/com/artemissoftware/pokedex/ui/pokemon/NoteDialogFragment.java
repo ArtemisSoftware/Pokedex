@@ -1,5 +1,6 @@
 package com.artemissoftware.pokedex.ui.pokemon;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -15,6 +16,10 @@ import com.artemissoftware.pokedex.databinding.DialogFragmentNoteBinding;
 
 public class NoteDialogFragment extends DialogFragment {
 
+
+    private DialogFragmentNoteBinding binding;
+
+    private NoteDialogListener listener;
 
     private static final String ARG_NAME = "name";
     private static final String ARG_NOTE = "note";
@@ -37,20 +42,19 @@ public class NoteDialogFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
 
-        DialogFragmentNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_fragment_note, null, false);
+        binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_fragment_note, null, false);
 
-        initDialog(binding);
+        initDialog();
 
 
-        String title = getActivity().getString(R.string.note);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setTitle(getActivity().getString(R.string.note));
         alertDialogBuilder.setView(binding.getRoot());
 
         alertDialogBuilder.setPositiveButton("OK",  new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // on success
+                saveNote();
             }
         });
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -67,12 +71,45 @@ public class NoteDialogFragment extends DialogFragment {
     }
 
 
-    private void initDialog(DialogFragmentNoteBinding binding) {
+    private void initDialog() {
 
         if (getArguments() != null) {
             binding.txtName.setText(getArguments().getString(ARG_NAME));
             //mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+
+    /**
+     * Call this method to send the data back to the parent fragment
+     */
+    public void saveNote() {
+
+        listener.saveNote(binding.txtInpNote.getText().toString());
+        dismiss();
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof NoteDialogListener) {
+            listener = (NoteDialogListener) context;
+        }
+        else {
+            throw new RuntimeException(context.toString() + " must implement NoteDialogListener");
+        }
 
     }
+
+
+
+
+    public interface NoteDialogListener {
+        void saveNote(String note);
+    }
+
+
 }

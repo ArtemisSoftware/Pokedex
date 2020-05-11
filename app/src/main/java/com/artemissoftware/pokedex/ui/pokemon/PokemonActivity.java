@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import javax.inject.Inject;
 
-public class PokemonActivity extends BaseActivity implements OnPokemonListener{
+public class PokemonActivity extends BaseActivity implements OnPokemonListener, NoteDialogFragment.NoteDialogListener{
 
 
     ActivityPokemonBinding activityPokemonBinding;
@@ -51,8 +51,6 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener{
 
 
         activityPokemonBinding = DataBindingUtil.setContentView(this, R.layout.activity_pokemon);
-
-
         activityPokemonBinding.setListener(this);
         activityPokemonBinding.setLifecycleOwner(this);
         activityPokemonBinding.setViewmodel(viewModel);
@@ -157,5 +155,10 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener{
 
         NoteDialogFragment dialog = NoteDialogFragment.newInstance(response.name);
         dialog.show(getSupportFragmentManager(), getString(R.string.note));
+    }
+
+    @Override
+    public void saveNote(String note) {
+
     }
 }

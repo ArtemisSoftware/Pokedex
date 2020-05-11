@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.pokemon.NotesFragment"
-        android:padding="40dp">
+        android:padding="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,7 +44,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -58,28 +57,23 @@
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
-
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcl_notes"
-                app:notes="@{notes}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:scrollbars="vertical"
+                android:layout_marginTop="24dp"
                 android:verticalSpacing="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:notes="@{notes}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
+
+
 </layout>

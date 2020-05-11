@@ -394,5 +394,16 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
         </androidx.core.widget.NestedScrollView>
 
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddOItransferIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_dialog_email"
+            app:icon="@android:drawable/ic_btn_speak_now"/>
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

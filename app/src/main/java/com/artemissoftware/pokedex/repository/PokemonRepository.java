@@ -2,6 +2,7 @@ package com.artemissoftware.pokedex.repository;
 
 import androidx.annotation.NonNull;
 
+import com.artemissoftware.pokedex.database.NoteDao;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
@@ -15,10 +16,12 @@ import io.reactivex.Single;
 public class PokemonRepository {
 
     private PokemonGlitchApi api;
+    private final NoteDao noteDao;
 
 
-    public PokemonRepository(@NonNull PokemonGlitchApi api) {
+    public PokemonRepository(@NonNull PokemonGlitchApi api, @NonNull NoteDao noteDao) {
         this.api = api;
+        this.noteDao = noteDao;
     }
 
 

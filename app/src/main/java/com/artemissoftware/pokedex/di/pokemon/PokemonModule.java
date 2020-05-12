@@ -1,5 +1,7 @@
 package com.artemissoftware.pokedex.di.pokemon;
 
+import com.artemissoftware.pokedex.database.NoteDao;
+import com.artemissoftware.pokedex.database.PokemonDataBase;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 
@@ -17,6 +19,17 @@ public class PokemonModule {
 
     @PokemonScope
     @Provides
+    static NoteDao provideNoteDao(PokemonDataBase pokemonDataBase){
+
+        NoteDao database = pokemonDataBase.getNoteDao();
+
+        Timber.d("Providing NoteDao: " + database);
+        return database;
+    }
+
+
+    @PokemonScope
+    @Provides
     static PokemonGlitchApi provideMainApi(@Named("detailRetrofit") Retrofit retrofit){
 
         PokemonGlitchApi api = retrofit.create(PokemonGlitchApi.class);
@@ -28,9 +41,9 @@ public class PokemonModule {
 
     @PokemonScope
     @Provides
-    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface) {
+    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface, NoteDao noteDao) {
 
-        PokemonRepository repository = new PokemonRepository(apiInterface);
+        PokemonRepository repository = new PokemonRepository(apiInterface, noteDao);
 
         Timber.d("Providing PokemonRepository: " + repository);
         return repository;

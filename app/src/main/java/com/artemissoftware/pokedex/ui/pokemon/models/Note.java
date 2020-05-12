@@ -3,14 +3,25 @@ package com.artemissoftware.pokedex.ui.pokemon.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity(tableName = "notes")
 public class Note implements Parcelable {
 
-
+    @PrimaryKey
     private int id;
+
+    @ColumnInfo(name = "idPokemon")
     private int idPokemon;
+
+    @ColumnInfo(name = "description")
     private String description;
+
+    @ColumnInfo(name = "registerDate")
     private Date registerDate;
 
     public Note(int idPokemon, String description, Date registerDate) {

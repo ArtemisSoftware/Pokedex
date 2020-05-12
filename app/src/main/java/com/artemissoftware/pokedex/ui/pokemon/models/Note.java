@@ -52,8 +52,6 @@ public class Note implements Parcelable {
         description = in.readString();
     }
 
-
-
     public static final Creator<Note> CREATOR = new Creator<Note>() {
         @Override
         public Note createFromParcel(Parcel in) {
@@ -65,7 +63,6 @@ public class Note implements Parcelable {
             return new Note[size];
         }
     };
-
 
     @Override
     public int describeContents() {

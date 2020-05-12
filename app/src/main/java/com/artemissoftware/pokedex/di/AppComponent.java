@@ -20,6 +20,7 @@ import dagger.android.AndroidInjector;
                 //AppModule.class,
                 ViewModelFactoryModule.class,
 
+                DatabaseModule.class,
                 NetworkModule.class,
 
         }

@@ -53,7 +53,6 @@ public class NoteDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), R.layout.dialog_fragment_note, null, false);
 
         initDialog();

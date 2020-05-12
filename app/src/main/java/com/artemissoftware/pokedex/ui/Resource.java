@@ -3,6 +3,8 @@ package com.artemissoftware.pokedex.ui;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 public class Resource <T> {
 
     @NonNull
@@ -23,6 +25,7 @@ public class Resource <T> {
     public static <T> Resource<T> success(@NonNull T data) {
         return new Resource<>(Status.SUCCESS, data, "");
     }
+
 
     public static <T> Resource<T> success(@NonNull T data, @NonNull String message) {
         return new Resource<>(Status.SUCCESS, data, message);

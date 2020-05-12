@@ -22,6 +22,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -134,7 +135,34 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
                     case SUCCESS:
 
                         ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).update((PokemonResponse) resource.data);
-                        ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).updateNotes(viewModel.getNotes());
+
+
+                        viewModel.getNotes(Integer.parseInt(((PokemonResponse) resource.data).number));
+                        //((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).updateNotes(viewModel.getNotes());
+                        break;
+
+
+                    case ERROR:
+
+                        break;
+
+                }
+            }
+        });
+
+
+        viewModel.observeNotes().observe(this, new Observer<Resource>() {
+            @Override
+            public void onChanged(Resource resource) {
+
+
+                //Timber.d("onChanged: " + resource.toString());
+
+                switch (resource.status){
+
+                    case SUCCESS:
+
+                        ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).updateNotes((List<Note>) resource.data);
                         break;
 
 

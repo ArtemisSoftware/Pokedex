@@ -32,6 +32,7 @@ public class PokemonViewModel extends ViewModel {
 
     private MutableLiveData<Resource> resourceLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
+    public MutableLiveData<Resource> notes;
 
 
     @Inject
@@ -43,6 +44,7 @@ public class PokemonViewModel extends ViewModel {
 
         resourceLiveData = new MutableLiveData<>();
         pokemon = new MutableLiveData<>();
+        notes = new MutableLiveData<>();
 
 
 
@@ -55,6 +57,9 @@ public class PokemonViewModel extends ViewModel {
         return resourceLiveData;
     }
 
+    public MutableLiveData<Resource> observeNotes(){
+        return notes;
+    }
 
 
     public void searchPokemon(String id) {
@@ -112,7 +117,7 @@ public class PokemonViewModel extends ViewModel {
     }
 
 
-    /*
+
     public void getNotes(int idPokemon){
 
         disposables.add(
@@ -122,10 +127,9 @@ public class PokemonViewModel extends ViewModel {
                     .subscribe(
                             new Consumer<List<Note>>() {
                                 @Override
-                                public void accept(List<Note> notes) throws Exception {
+                                public void accept(List<Note> items) throws Exception {
 
-                                    //scoreLiveData.setValue(Resource.success(score, ""));
-
+                                    notes.setValue(Resource.success(items));
                                 }
                             },
                             new Consumer<Throwable>() {
@@ -138,7 +142,7 @@ public class PokemonViewModel extends ViewModel {
                     )
         );
     }
-*/
+
 
     public List<Note> getNotes(){
         return repository.getNotes();

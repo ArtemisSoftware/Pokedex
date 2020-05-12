@@ -10,9 +10,9 @@ import java.util.List;
 import io.reactivex.Flowable;
 
 @Dao
-public interface NoteDao {
+abstract public class NoteDao implements BaseDao<Note>{
 
 
     @Query("SELECT * FROM notes WHERE idPokemon = :idPokemon")
-    Flowable<List<Note>> getItemList(int idPokemon);
+    abstract public Flowable<List<Note>> getNotes(int idPokemon);
 }

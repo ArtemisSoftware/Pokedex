@@ -21,6 +21,8 @@ import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Date;
+
 import javax.inject.Inject;
 
 public class PokemonActivity extends BaseActivity implements OnPokemonListener, NoteDialogFragment.NoteDialogListener, AboutFragment.OnLikeListener{
@@ -163,7 +165,9 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
 
     @Override
     public void saveNote(String note) {
-        //save note
+
+        Note item = new Note(Integer.parseInt(viewModel.pokemon.getValue().number), note, new Date());
+        viewModel.addNote(item);
     }
 
     @Override

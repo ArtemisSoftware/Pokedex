@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class PokemonRepository {
@@ -29,12 +30,14 @@ public class PokemonRepository {
         return api.searchPokemon(id);
     }
 
-
-    /*
-    public Flowable<List<Category>> getCategories() {
-        return categoryDao.getCategories();
+    public Single<Long> insertNote(Note note) {
+        return noteDao.insert(note);
     }
-    */
+
+    public Flowable<List<Note>> getNotes(int idPokemon) {
+        return noteDao.getNotes(idPokemon);
+    }
+
 
 
 

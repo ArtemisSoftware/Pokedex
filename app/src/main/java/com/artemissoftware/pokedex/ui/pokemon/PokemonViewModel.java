@@ -13,10 +13,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.FlowableSubscriber;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.internal.operators.flowable.FlowableFromObservable;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
@@ -84,6 +87,58 @@ public class PokemonViewModel extends ViewModel {
 
     }
 
+
+    public void addNote(Note note){
+
+        repository.insertNote(note)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Long aLong) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
+
+
+    /*
+    public void getNotes(int idPokemon){
+
+        disposables.add(
+            repository.getNotes(idPokemon)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            new Consumer<List<Note>>() {
+                                @Override
+                                public void accept(List<Note> notes) throws Exception {
+
+                                    //scoreLiveData.setValue(Resource.success(score, ""));
+
+                                }
+                            },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+
+                                    //scoreLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                                }
+                            }
+                    )
+        );
+    }
+*/
 
     public List<Note> getNotes(){
         return repository.getNotes();

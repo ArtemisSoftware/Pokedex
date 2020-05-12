@@ -15,6 +15,8 @@ import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.DialogFragmentNoteBinding;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
+import java.util.Date;
+
 public class NoteDialogFragment extends DialogFragment {
 
 
@@ -22,6 +24,7 @@ public class NoteDialogFragment extends DialogFragment {
 
     private NoteDialogListener listener;
 
+    private static final String ARG_ID_POKEMON = "idPokemon";
     private static final String ARG_NAME = "name";
     private static final String ARG_NOTE = "note";
 
@@ -31,9 +34,10 @@ public class NoteDialogFragment extends DialogFragment {
     }
 
 
-    public static NoteDialogFragment newInstance(String name) {
+    public static NoteDialogFragment newInstance(String idPokemon, String name) {
         NoteDialogFragment frag = new NoteDialogFragment();
         Bundle args = new Bundle();
+        args.putString(ARG_ID_POKEMON, idPokemon);
         args.putString(ARG_NAME, name);
         frag.setArguments(args);
         return frag;
@@ -57,7 +61,6 @@ public class NoteDialogFragment extends DialogFragment {
 
         initDialog();
 
-
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
         alertDialogBuilder.setTitle(getActivity().getString(R.string.note));
         alertDialogBuilder.setView(binding.getRoot());
@@ -68,6 +71,7 @@ public class NoteDialogFragment extends DialogFragment {
                 saveNote();
             }
         });
+
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -75,7 +79,6 @@ public class NoteDialogFragment extends DialogFragment {
                     dialog.dismiss();
                 }
             }
-
         });
 
         return alertDialogBuilder.create();
@@ -100,7 +103,20 @@ public class NoteDialogFragment extends DialogFragment {
      */
     public void saveNote() {
 
-        listener.saveNote(binding.txtInpNote.getText().toString());
+        Note note;
+
+        if(getArguments().containsKey(ARG_NOTE) == true){
+            note = getArguments().getParcelable(ARG_NOTE);
+
+            note.setDescription(binding.txtInpNote.getText().toString());
+            note.setRegisterDate(new Date());
+        }
+        else{
+            note = new Note(Integer.parseInt(getArguments().getString(ARG_ID_POKEMON)), binding.txtInpNote.getText().toString(), new Date());
+        }
+
+
+        listener.saveNote(note);
         dismiss();
     }
 
@@ -126,7 +142,8 @@ public class NoteDialogFragment extends DialogFragment {
 
 
     public interface NoteDialogListener {
-        void saveNote(String note);
+
+        void saveNote(Note note);
     }
 
 

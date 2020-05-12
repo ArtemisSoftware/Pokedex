@@ -25,6 +25,7 @@ public class Note implements Parcelable {
     @ColumnInfo(name = "registerDate")
     private Date registerDate;
 
+
     public Note(int idPokemon, String description, Date registerDate) {
         this.idPokemon = idPokemon;
         this.description = description;
@@ -48,13 +49,22 @@ public class Note implements Parcelable {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Date getRegisterDate() {
         return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
     }
 
     public String getDate() {
         return DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.MEDIUM).format(registerDate);
     }
+
 
 
 

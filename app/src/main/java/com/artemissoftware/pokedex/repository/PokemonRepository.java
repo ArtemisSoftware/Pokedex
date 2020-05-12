@@ -34,6 +34,10 @@ public class PokemonRepository {
         return noteDao.insert(note);
     }
 
+    public Single<Integer> updateNote(Note note) {
+        return noteDao.update(note);
+    }
+
     public Flowable<List<Note>> getNotes(int idPokemon) {
         return noteDao.getNotes(idPokemon);
     }

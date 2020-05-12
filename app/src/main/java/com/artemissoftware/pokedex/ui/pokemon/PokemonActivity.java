@@ -176,7 +176,7 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
     @Override
     public void showNoteDialog(PokemonResponse response) {
 
-        NoteDialogFragment dialog = NoteDialogFragment.newInstance(response.name);
+        NoteDialogFragment dialog = NoteDialogFragment.newInstance(response.number, response.name);
         dialog.show(getSupportFragmentManager(), getString(R.string.note));
     }
 
@@ -188,10 +188,8 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
     }
 
     @Override
-    public void saveNote(String note) {
-
-        Note item = new Note(Integer.parseInt(viewModel.pokemon.getValue().number), note, new Date());
-        viewModel.addNote(item);
+    public void saveNote(Note note) {
+        viewModel.addNote(note);
     }
 
     @Override

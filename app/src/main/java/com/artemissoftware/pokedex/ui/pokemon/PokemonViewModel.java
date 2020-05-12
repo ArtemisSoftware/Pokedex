@@ -95,6 +95,18 @@ public class PokemonViewModel extends ViewModel {
 
     public void addNote(Note note){
 
+        if(note.getId() == 0){
+            insertNote(note);
+        }
+        else{
+            updateNote(note);
+        }
+
+    }
+
+
+    private void insertNote(Note note){
+
         repository.insertNote(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -116,6 +128,29 @@ public class PokemonViewModel extends ViewModel {
                 });
     }
 
+
+    private void updateNote(Note note){
+
+        repository.updateNote(note)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Integer aInt) {
+                        getNotes(note.getIdPokemon());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
 
 
     public void getNotes(int idPokemon){

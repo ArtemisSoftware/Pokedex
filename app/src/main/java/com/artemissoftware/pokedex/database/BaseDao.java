@@ -6,11 +6,13 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Update;
 
+import io.reactivex.Single;
+
 @Dao
 public interface BaseDao<T> {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    long insert(T entity);
+    Single<Long> insert(T entity);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(T... entity);
@@ -18,12 +20,12 @@ public interface BaseDao<T> {
 
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
-    void update(T entity);
+    Single<Integer> update(T entity);
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     void update(T... entity);
 
 
     @Delete
-    void delete(T entity);
+    Single<Integer> delete(T entity);
 }

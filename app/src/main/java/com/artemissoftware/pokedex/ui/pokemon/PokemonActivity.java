@@ -79,6 +79,7 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
         if(bundle != null) {
             id = bundle.getString(getString(R.string.key_pokemon_id));
             viewModel.searchPokemon(id);
+            viewModel.getNotes(Integer.parseInt(id));
         }
 
 
@@ -127,7 +128,6 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
             @Override
             public void onChanged(Resource resource) {
 
-
                 //Timber.d("onChanged: " + resource.toString());
 
                 switch (resource.status){
@@ -135,10 +135,6 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
                     case SUCCESS:
 
                         ((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).update((PokemonResponse) resource.data);
-
-
-                        viewModel.getNotes(Integer.parseInt(((PokemonResponse) resource.data).number));
-                        //((InfoPagerAdapter) activityPokemonBinding.viewpagerContainer.getAdapter()).updateNotes(viewModel.getNotes());
                         break;
 
 

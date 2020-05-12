@@ -106,7 +106,7 @@ public class PokemonViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(Long aLong) {
-
+                        getNotes(note.getIdPokemon());
                     }
 
                     @Override
@@ -141,11 +141,6 @@ public class PokemonViewModel extends ViewModel {
                             }
                     )
         );
-    }
-
-
-    public List<Note> getNotes(){
-        return repository.getNotes();
     }
 
 

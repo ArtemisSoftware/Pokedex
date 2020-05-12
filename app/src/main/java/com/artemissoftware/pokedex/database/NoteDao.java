@@ -13,6 +13,6 @@ import io.reactivex.Flowable;
 abstract public class NoteDao implements BaseDao<Note>{
 
 
-    @Query("SELECT * FROM notes WHERE idPokemon = :idPokemon")
+    @Query("SELECT * FROM notes WHERE idPokemon = :idPokemon ORDER BY registerDate DESC")
     abstract public Flowable<List<Note>> getNotes(int idPokemon);
 }

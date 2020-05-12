@@ -45,6 +45,9 @@ public class PokemonActivityBinding {
             adapter = new NotesRecyclerAdapter(view.getContext(), registers);
             view.setAdapter(adapter);
         }
+        else{
+            adapter.update(registers);
+        }
 
     }
 

@@ -51,4 +51,11 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemCount() {
         return items.size();
     }
+
+
+    public void update(List<Note> items){
+        this.items.clear();
+        this.items.addAll(items);
+        notifyDataSetChanged();
+    }
 }

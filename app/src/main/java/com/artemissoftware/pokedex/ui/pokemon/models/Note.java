@@ -7,12 +7,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 @Entity(tableName = "notes")
 public class Note implements Parcelable {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @ColumnInfo(name = "idPokemon")
@@ -51,7 +52,9 @@ public class Note implements Parcelable {
         return registerDate;
     }
 
-
+    public String getDate() {
+        return DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.MEDIUM).format(registerDate);
+    }
 
 
 

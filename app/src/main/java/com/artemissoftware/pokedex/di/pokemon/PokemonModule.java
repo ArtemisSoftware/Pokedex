@@ -5,13 +5,18 @@ import com.artemissoftware.pokedex.database.PokemonDao;
 import com.artemissoftware.pokedex.database.PokemonDataBase;
 import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
+import com.artemissoftware.pokedex.requests.api.JsonPlaceHolderApi;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
+import com.artemissoftware.pokedex.util.ApiConstants;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
 @Module
@@ -41,9 +46,36 @@ public class PokemonModule {
 
 
 
+    @Provides
+    @Singleton
+    @Named("jsonplaceholderRetrofit")
+    Retrofit provideJsonplaceholderRetrofit(OkHttpClient okHttpClient) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(ApiConstants.JSON_PLACE_HOLDER_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        Timber.d("Providing JsonplaceholderRetrofit: " + retrofit);
+        return retrofit;
+    }
+
+
     @PokemonScope
     @Provides
-    static PokemonGlitchApi provideMainApi(@Named("detailRetrofit") Retrofit retrofit){
+    static JsonPlaceHolderApi provideJsonPlaceHolderApi(@Named("jsonplaceholderRetrofit") Retrofit retrofit){
+
+        JsonPlaceHolderApi api = retrofit.create(JsonPlaceHolderApi.class);
+
+        Timber.d("Providing JsonPlaceHolderApi: " + api);
+        return api;
+    }
+
+
+
+    @PokemonScope
+    @Provides
+    static PokemonGlitchApi provideGlitchApi(@Named("detailRetrofit") Retrofit retrofit){
 
         PokemonGlitchApi api = retrofit.create(PokemonGlitchApi.class);
 
@@ -64,9 +96,9 @@ public class PokemonModule {
 
     @PokemonScope
     @Provides
-    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface, PokemonDao pokemonDao) {
+    PokemonRepository providePokemonRepository(PokemonGlitchApi pokemonGlitchApi, JsonPlaceHolderApi jsonPlaceHolderApi, PokemonDao pokemonDao) {
 
-        PokemonRepository repository = new PokemonRepository(apiInterface, pokemonDao);
+        PokemonRepository repository = new PokemonRepository(pokemonGlitchApi, jsonPlaceHolderApi, pokemonDao);
 
         Timber.d("Providing PokemonRepository: " + repository);
         return repository;

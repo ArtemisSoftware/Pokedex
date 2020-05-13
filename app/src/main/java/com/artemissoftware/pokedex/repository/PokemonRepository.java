@@ -3,6 +3,7 @@ package com.artemissoftware.pokedex.repository;
 import androidx.annotation.NonNull;
 
 import com.artemissoftware.pokedex.database.PokemonDao;
+import com.artemissoftware.pokedex.requests.api.JsonPlaceHolderApi;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
@@ -16,11 +17,13 @@ public class PokemonRepository implements Repository<Pokemon>{
 
     private final PokemonDao pokemonDao;
     private final PokemonGlitchApi api;
+    private final JsonPlaceHolderApi jsonPlaceHolderApi;
 
 
-    public PokemonRepository(@NonNull PokemonGlitchApi api, @NonNull PokemonDao pokemonDao) {
+    public PokemonRepository(@NonNull PokemonGlitchApi api, @NonNull JsonPlaceHolderApi jsonPlaceHolderApi, @NonNull PokemonDao pokemonDao) {
         this.api = api;
         this.pokemonDao = pokemonDao;
+        this.jsonPlaceHolderApi = jsonPlaceHolderApi;
     }
 
 

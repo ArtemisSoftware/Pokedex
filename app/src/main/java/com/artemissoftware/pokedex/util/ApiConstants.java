@@ -5,6 +5,8 @@ public class ApiConstants {
     public static final String BASE_URL = "https://pokeapi.co/api/v2/";
     public static final String DETAIL_URL = "https://pokeapi.glitch.me/v1/";
 
+    public static final String JSON_PLACE_HOLDER_URL = "https://jsonplaceholder.typicode.com/";
+
 
     public static final String GAME_SPRITE_FRONT_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/number.png";
     public static final String GAME_SPRITE_BACK_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/number.png";

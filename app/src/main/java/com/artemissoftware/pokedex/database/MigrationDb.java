@@ -24,7 +24,7 @@ public class MigrationDb {
         public void migrate(SupportSQLiteDatabase database) {
             try {
                 database.execSQL("CREATE TABLE IF NOT EXISTS 'pokemons' ("
-                        + "'id' TEXT PRIMARY KEY , "
+                        + "'id' TEXT PRIMARY KEY NOT NULL, "
                         + "'name' TEXT NOT NULL, "
                         + "'description' TEXT NOT NULL) ");
 

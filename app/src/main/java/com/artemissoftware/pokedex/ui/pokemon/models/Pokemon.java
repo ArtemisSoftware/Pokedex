@@ -3,11 +3,13 @@ package com.artemissoftware.pokedex.ui.pokemon.models;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "pokemons")
 public class Pokemon {
 
+    @NonNull
     @PrimaryKey
     private String id;
 
@@ -15,9 +17,11 @@ public class Pokemon {
     @ColumnInfo(name = "name")
     private String name;
 
+    @NonNull
     @ColumnInfo(name = "description")
     private String description;
 
+    @Ignore
     public Pokemon() {}
 
     public Pokemon(String id, @NonNull String name, String description) {

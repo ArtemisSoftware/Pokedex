@@ -14,9 +14,9 @@ public interface ModelMapping {
 
     @Mapping(source = "number", target = "id")
     //@Mapping(source = "height", target = "especie")
-    Pokemon map(PokemonResponse car);
+    Pokemon map(PokemonResponse item);
 
 
     @Mapping(source = "id", target = "number")
-    PokemonResponse map(Pokemon car);
+    PokemonResponse map(Pokemon item);
 }

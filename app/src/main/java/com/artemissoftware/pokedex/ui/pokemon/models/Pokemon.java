@@ -1,10 +1,21 @@
 package com.artemissoftware.pokedex.ui.pokemon.models;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "pokemons")
 public class Pokemon {
 
-    private int id;
+    @PrimaryKey
+    private String id;
 
-    public Pokemon(int id) {
+    public Pokemon() {}
+
+    public Pokemon(String id) {
+        this.id = id;
+    }
+
+    public void setId(String id) {
         this.id = id;
     }
 }

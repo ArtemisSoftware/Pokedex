@@ -13,6 +13,8 @@ import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
+import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
+import com.artemissoftware.pokedex.util.ModelMapping;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
 
@@ -190,6 +192,8 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
 
     @Override
     public void saveFourite(boolean checked) {
+
+        Pokemon pokemon = ModelMapping.INSTANCE.map(viewModel.pokemon.getValue());
 
 
         if(checked == true) {

@@ -2,6 +2,7 @@ package com.artemissoftware.pokedex.ui.pokemon.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ItemNoteBinding;
+import com.artemissoftware.pokedex.ui.pokemon.NotesFragment;
+import com.artemissoftware.pokedex.ui.pokemon.OnItemLongListener;
 import com.artemissoftware.pokedex.ui.pokemon.OnPokemonListener;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
@@ -21,10 +24,12 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private List<Note> items = new ArrayList<>();
     private Context context;
+    private NotesFragment.OnNoteLongPressListener onItemLongListener;
 
-    public NotesRecyclerAdapter(Context context, List<Note> items) {
+    public NotesRecyclerAdapter(Context context, List<Note> items, NotesFragment.OnNoteLongPressListener onItemLongListener) {
         this.items = items;
         this.context = context;
+        this.onItemLongListener = onItemLongListener;
     }
 
 
@@ -33,7 +38,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         ItemNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_note, parent, false);
-        return new NoteViewHolder(binding.getRoot());
+        return new NoteViewHolder(binding.getRoot(), this.onItemLongListener);
     }
 
     @Override
@@ -58,4 +63,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
         this.items.addAll(items);
         notifyDataSetChanged();
     }
+
+
+
 }

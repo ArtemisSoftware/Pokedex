@@ -43,4 +43,7 @@ public class PokemonRepository {
     }
 
 
+    public Single<Integer> deleteNote(Note note) {
+        return noteDao.delete(note);
+    }
 }

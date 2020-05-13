@@ -26,7 +26,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class PokemonActivity extends BaseActivity implements OnPokemonListener, NoteDialogFragment.NoteDialogListener, AboutFragment.OnLikeListener{
+public class PokemonActivity extends BaseActivity implements OnPokemonListener,
+        NoteDialogFragment.NoteDialogListener,
+        AboutFragment.OnLikeListener, NotesFragment.OnNoteLongPressListener{
 
 
     ActivityPokemonBinding activityPokemonBinding;
@@ -187,6 +189,7 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
         dialog.show(getSupportFragmentManager(), getString(R.string.note));
     }
 
+
     @Override
     public void saveNote(Note note) {
         viewModel.addNote(note);
@@ -202,5 +205,11 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener, 
         else{
             //delete favourite
         }
+    }
+
+
+    @Override
+    public void onNoteLongClick(Note note) {
+        viewModel.deleteNote(note);
     }
 }

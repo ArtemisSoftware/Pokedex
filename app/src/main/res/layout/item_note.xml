@@ -16,20 +16,31 @@
 
     </data>
 
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp">
-
+    <!--
+         <FrameLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+   >
 
 
-    <com.google.android.material.card.MaterialCardView
+         <LinearLayout
+
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:padding="10dp"
+             android:background="@color/gradientOrange">
+     -->
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+
+        app:cardElevation="0dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:onClick="@{() -> listener.showNoteDialog(note) }">
 
 
@@ -62,6 +73,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>

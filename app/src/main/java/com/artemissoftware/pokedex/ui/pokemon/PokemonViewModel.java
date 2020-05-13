@@ -153,6 +153,31 @@ public class PokemonViewModel extends ViewModel {
     }
 
 
+    public void deleteNote(Note note){
+
+        repository.deleteNote(note)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Integer aInt) {
+                        getNotes(note.getIdPokemon());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
+
+
+
     public void getNotes(int idPokemon){
 
         disposables.add(

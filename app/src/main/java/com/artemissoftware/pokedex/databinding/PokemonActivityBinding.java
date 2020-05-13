@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.artemissoftware.pokedex.ui.pokemon.NotesFragment;
+import com.artemissoftware.pokedex.ui.pokemon.OnPokemonListener;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.NotesRecyclerAdapter;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 
@@ -25,8 +27,10 @@ public class PokemonActivityBinding {
     }
 
 
-    @BindingAdapter("notes")
-    public static void setNotes(RecyclerView view, List<Note> registers) {
+
+
+    @BindingAdapter({"notes", "onLongClick"})
+    public static void setNotes(RecyclerView view, List<Note> registers, NotesFragment.OnNoteLongPressListener listener) {
 
         if(registers == null){
             return;
@@ -42,7 +46,7 @@ public class PokemonActivityBinding {
         NotesRecyclerAdapter adapter = (NotesRecyclerAdapter) view.getAdapter();
 
         if(adapter == null){
-            adapter = new NotesRecyclerAdapter(view.getContext(), registers);
+            adapter = new NotesRecyclerAdapter(view.getContext(), registers, listener);
             view.setAdapter(adapter);
         }
         else{

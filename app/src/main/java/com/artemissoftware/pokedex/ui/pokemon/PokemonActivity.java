@@ -1,14 +1,10 @@
 package com.artemissoftware.pokedex.ui.pokemon;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
@@ -18,10 +14,8 @@ import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.tabs.TabLayout;
 
-import java.util.Date;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -62,9 +56,8 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
         activityPokemonBinding.setViewmodel(viewModel);
 
 
-        final Toolbar toolbar = findViewById(R.id.htab_toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
+        setSupportActionBar(activityPokemonBinding.htabToolbar);
+        //if (getSupportActionBar() != null) getSupportActionBar().setTitle("Parallax Tabs");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -197,6 +190,7 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
 
     @Override
     public void saveFourite(boolean checked) {
+
 
         if(checked == true) {
 

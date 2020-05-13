@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.artemissoftware.pokedex.repository.PokemonRepository;
-import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
@@ -13,13 +12,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.FlowableSubscriber;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.internal.operators.flowable.FlowableFromObservable;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 

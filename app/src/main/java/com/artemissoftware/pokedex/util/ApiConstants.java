@@ -6,6 +6,10 @@ public class ApiConstants {
     public static final String DETAIL_URL = "https://pokeapi.glitch.me/v1/";
 
 
+    public static final String GAME_SPRITE_FRONT_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/number.png";
+    public static final String GAME_SPRITE_BACK_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/number.png";
+
+
 
     public static final int CONNECTION_TIMEOUT = 10; // 10 seconds
     public static final int READ_TIMEOUT = 20; // 2 seconds

@@ -1,12 +1,12 @@
 package com.artemissoftware.pokedex.requests.models;
 
+import com.artemissoftware.pokedex.util.ApiConstants;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class PokemonResponse {
-
 
     @SerializedName("number")
     public String number;
@@ -42,6 +42,13 @@ public class PokemonResponse {
     public String sprite;
 
 
+    public class Family {
+
+        @SerializedName("evolutionLine")
+        public List<String> evolutionLine;
+    }
+
+
     public String referenceId(){
 
         DecimalFormat df = new DecimalFormat("000");
@@ -49,18 +56,13 @@ public class PokemonResponse {
     }
 
     public String getGameSpriteBack(){
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/"+ number + ".png";
+        return ApiConstants.GAME_SPRITE_BACK_URL.replace("number", number);
     }
 
     public String getGameSpriteFront(){
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ number + ".png";
+        return ApiConstants.GAME_SPRITE_FRONT_URL.replace("number", number);
     }
 
 
-    public class Family {
-
-        @SerializedName("evolutionLine")
-        public List<String> evolutionLine;
-    }
 
 }

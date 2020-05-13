@@ -121,6 +121,29 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
 
     private void subscribeObservers() {
 
+        viewModel.observeMessages().observe(this, new Observer<Resource>() {
+            @Override
+            public void onChanged(Resource resource) {
+
+                //Timber.d("onChanged: " + resource.toString());
+
+                switch (resource.status){
+
+                    case SUCCESS:
+
+
+                        break;
+
+
+                    case ERROR:
+
+                        break;
+
+                }
+            }
+        });
+
+
         viewModel.observePokemon().observe(this, new Observer<Resource>() {
             @Override
             public void onChanged(Resource resource) {

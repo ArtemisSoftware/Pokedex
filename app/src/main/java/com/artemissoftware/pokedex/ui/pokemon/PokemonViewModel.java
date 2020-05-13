@@ -35,6 +35,7 @@ public class PokemonViewModel extends ViewModel {
     private final PokemonRepository pokemonRepository;
 
     private MutableLiveData<Resource> resourceLiveData;
+    private MutableLiveData<Resource> messageLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
     public MutableLiveData<Resource> notes;
 
@@ -47,6 +48,7 @@ public class PokemonViewModel extends ViewModel {
 
         this.disposables = new CompositeDisposable();
 
+        messageLiveData = new MutableLiveData<>();
         resourceLiveData = new MutableLiveData<>();
         pokemon = new MutableLiveData<>();
         notes = new MutableLiveData<>();
@@ -60,6 +62,10 @@ public class PokemonViewModel extends ViewModel {
 
     public MutableLiveData<Resource> observePokemon(){
         return resourceLiveData;
+    }
+
+    public MutableLiveData<Resource> observeMessages(){
+        return messageLiveData;
     }
 
     public MutableLiveData<Resource> observeNotes(){
@@ -88,12 +94,11 @@ public class PokemonViewModel extends ViewModel {
                         pokemon.setValue(pokemonResponse.get(0));
 
                         getFavourite(pokemonResponse.get(0).number);
-                        //resourceLiveData.setValue(Resource.success(pokemonResponse.get(0)));
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
-                        resourceLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
 
@@ -117,13 +122,13 @@ public class PokemonViewModel extends ViewModel {
                     public void onNext(Post post) {
 
                         if(post.getId() == 101){
-                            resourceLiveData.setValue(Resource.success(post, "Pokemon posted"));
+                            messageLiveData.setValue(Resource.success(post, "Pokemon posted"));
                         }
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
-                        resourceLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
 
                     @Override
@@ -131,10 +136,6 @@ public class PokemonViewModel extends ViewModel {
 
                     }
                 });
-
-
-
-
     }
 
 
@@ -169,8 +170,8 @@ public class PokemonViewModel extends ViewModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
     }
@@ -193,8 +194,8 @@ public class PokemonViewModel extends ViewModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
     }
@@ -217,8 +218,8 @@ public class PokemonViewModel extends ViewModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
     }
@@ -242,7 +243,7 @@ public class PokemonViewModel extends ViewModel {
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
 
-                                    //scoreLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                                    messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                                 }
                             }
                     )
@@ -276,12 +277,12 @@ public class PokemonViewModel extends ViewModel {
 
                     @Override
                     public void onSuccess(Long aLong) {
-
+                        sendPost(pokemon);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
     }
@@ -303,8 +304,8 @@ public class PokemonViewModel extends ViewModel {
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
                 });
     }
@@ -328,13 +329,12 @@ public class PokemonViewModel extends ViewModel {
                             pokemon.getValue().favourite = true;
                         }
 
-
                         resourceLiveData.setValue(Resource.success(pokemon.getValue()));
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
                     }
 
                     @Override

@@ -1,13 +1,15 @@
 package com.artemissoftware.pokedex.repository;
 
+import io.reactivex.Single;
+
 public interface Repository<T> {
 
-    void save(T item);
+    Single<Long> save(T item);
 
-    void insert(T item);
+    Single<Long> insert(T item);
 
-    void update(T item);
+    Single<Integer> update(T item);
 
-    void delete(T item);
+    Single<Integer> delete(T item);
 
 }

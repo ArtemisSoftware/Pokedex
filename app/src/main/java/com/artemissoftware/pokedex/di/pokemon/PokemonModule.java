@@ -2,11 +2,10 @@ package com.artemissoftware.pokedex.di.pokemon;
 
 import com.artemissoftware.pokedex.database.NoteDao;
 import com.artemissoftware.pokedex.database.PokemonDataBase;
-import com.artemissoftware.pokedex.repository.PokemonRepository;
+import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -41,11 +40,11 @@ public class PokemonModule {
 
     @PokemonScope
     @Provides
-    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface, NoteDao noteDao) {
+    NoteRepository providePokemonRepository(PokemonGlitchApi apiInterface, NoteDao noteDao) {
 
-        PokemonRepository repository = new PokemonRepository(apiInterface, noteDao);
+        NoteRepository repository = new NoteRepository(apiInterface, noteDao);
 
-        Timber.d("Providing PokemonRepository: " + repository);
+        Timber.d("Providing NoteRepository: " + repository);
         return repository;
     }
 

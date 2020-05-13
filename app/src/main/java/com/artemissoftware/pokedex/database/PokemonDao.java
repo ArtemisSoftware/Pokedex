@@ -14,7 +14,7 @@ import io.reactivex.Maybe;
 abstract public class PokemonDao implements BaseDao<Pokemon>{
 
     @Query("SELECT COUNT(id) FROM pokemons WHERE id = :id")
-    abstract public Maybe<Integer> getAll(String id);
+    abstract public Maybe<Integer> exists(String id);
 
 
     @Query("SELECT * FROM pokemons ORDER BY id ASC")

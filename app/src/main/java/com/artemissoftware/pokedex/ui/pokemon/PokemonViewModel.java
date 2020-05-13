@@ -3,7 +3,7 @@ package com.artemissoftware.pokedex.ui.pokemon;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.artemissoftware.pokedex.repository.PokemonRepository;
+import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
@@ -25,7 +25,7 @@ public class PokemonViewModel extends ViewModel {
 
     private final CompositeDisposable disposables;
 
-    private final PokemonRepository repository;
+    private final NoteRepository repository;
 
     private MutableLiveData<Resource> resourceLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
@@ -33,7 +33,7 @@ public class PokemonViewModel extends ViewModel {
 
 
     @Inject
-    public PokemonViewModel(PokemonRepository repository){
+    public PokemonViewModel(NoteRepository repository){
 
         this.repository = repository;
 

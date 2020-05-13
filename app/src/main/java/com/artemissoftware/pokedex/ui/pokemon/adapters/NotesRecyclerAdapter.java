@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ItemNoteBinding;
 import com.artemissoftware.pokedex.ui.pokemon.NotesFragment;
-import com.artemissoftware.pokedex.ui.pokemon.OnItemLongListener;
 import com.artemissoftware.pokedex.ui.pokemon.OnPokemonListener;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 

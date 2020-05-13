@@ -199,6 +199,8 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
         if(checked == true) {
 
             //save favourite
+
+            viewModel.sendPost(pokemon);
         }
         else{
             //delete favourite

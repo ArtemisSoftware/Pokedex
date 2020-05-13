@@ -6,11 +6,13 @@ import com.artemissoftware.pokedex.database.PokemonDao;
 import com.artemissoftware.pokedex.requests.api.JsonPlaceHolderApi;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
+import com.artemissoftware.pokedex.requests.models.Post;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.List;
 
 import io.reactivex.Maybe;
+import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public class PokemonRepository implements Repository<Pokemon>{
@@ -31,6 +33,10 @@ public class PokemonRepository implements Repository<Pokemon>{
         return api.searchPokemon(id);
     }
 
+
+    public Observable<Post> postPokemon(Post post) {
+        return jsonPlaceHolderApi.createPost(post);
+    }
 
 
     @Override

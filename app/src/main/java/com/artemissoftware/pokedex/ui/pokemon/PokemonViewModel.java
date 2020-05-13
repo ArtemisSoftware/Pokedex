@@ -6,13 +6,17 @@ import androidx.lifecycle.ViewModel;
 import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
+import com.artemissoftware.pokedex.requests.models.Post;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
+import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
+
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -200,6 +204,44 @@ public class PokemonViewModel extends ViewModel {
                             }
                     )
         );
+    }
+
+    public void sendPost(Pokemon pokemon){
+
+        Post post = new Post(Integer.parseInt(pokemon.getId()), pokemon.getName(), pokemon.getDescription());
+
+        pokemonRepository.postPokemon(post)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .unsubscribeOn(Schedulers.io())
+                     .subscribe(new Observer<Post>() {
+                         @Override
+                         public void onSubscribe(Disposable d) {
+                             disposables.add(d);
+                         }
+
+                         @Override
+                         public void onNext(Post post) {
+
+                             if(post.getId() == 101){
+                                 resourceLiveData.setValue(Resource.success(post, "Pokemon posted"));
+                             }
+                         }
+
+                         @Override
+                         public void onError(Throwable throwable) {
+                             resourceLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                         }
+
+                         @Override
+                         public void onComplete() {
+
+                         }
+                     });
+
+
+
+
     }
 
 

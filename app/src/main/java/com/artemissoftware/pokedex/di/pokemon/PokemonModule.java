@@ -16,6 +16,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
@@ -46,13 +47,15 @@ public class PokemonModule {
 
 
 
+    @PokemonScope
     @Provides
-    @Singleton
     @Named("jsonplaceholderRetrofit")
     Retrofit provideJsonplaceholderRetrofit(OkHttpClient okHttpClient) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.JSON_PLACE_HOLDER_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                //.client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

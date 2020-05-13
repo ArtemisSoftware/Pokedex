@@ -191,20 +191,14 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
     }
 
     @Override
-    public void saveFourite(boolean checked) {
+    public void saveFourite(boolean favourite) {
 
         Pokemon pokemon = ModelMapping.INSTANCE.map(viewModel.pokemon.getValue());
 
+        viewModel.setFavourite(favourite, pokemon);
 
-        if(checked == true) {
+        //viewModel.sendPost(pokemon);
 
-            //save favourite
-
-            viewModel.sendPost(pokemon);
-        }
-        else{
-            //delete favourite
-        }
     }
 
 

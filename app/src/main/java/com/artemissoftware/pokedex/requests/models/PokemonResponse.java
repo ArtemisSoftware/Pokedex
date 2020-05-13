@@ -64,5 +64,5 @@ public class PokemonResponse {
     }
 
 
-
+    public boolean favourite;
 }

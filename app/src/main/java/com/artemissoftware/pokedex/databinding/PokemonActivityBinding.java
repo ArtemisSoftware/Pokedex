@@ -9,6 +9,7 @@ import com.artemissoftware.pokedex.ui.pokemon.NotesFragment;
 import com.artemissoftware.pokedex.ui.pokemon.OnPokemonListener;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.NotesRecyclerAdapter;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
+import com.sackcentury.shinebuttonlib.ShineButton;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class PokemonActivityBinding {
         view.setTags(items);
     }
 
+
+    @BindingAdapter("favourite")
+    public static void setFavourite(ShineButton view, boolean selected) {
+         view.setChecked(selected);
+    }
 
 
 

@@ -205,11 +205,11 @@
 
 
                 <com.sackcentury.shinebuttonlib.ShineButton
+                    android:id="@+id/btn_favourite"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="18dp"
                     android:src="@android:color/darker_gray"
-                    android:id="@+id/btn_favourite"
                     app:btn_color="@android:color/darker_gray"
                     app:btn_fill_color="#FFD700"
                     app:allow_random_color="false"
@@ -223,6 +223,7 @@
                     app:small_shine_color="#CC9999"
                     app:shine_count="15"
                     app:siShape="@raw/star"
+                    app:favourite="@{pokemon.favourite}"
                     android:onClick="@{(view) -> listener.saveFourite(((ShineButton)view).isChecked)}"/>
 
                 <!-- "@{(view) -> fragment.setFavourite(((ShineButton)view).isChecked)}" -->

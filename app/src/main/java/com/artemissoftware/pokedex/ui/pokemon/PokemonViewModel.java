@@ -16,6 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.MaybeObserver;
 import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -66,6 +67,7 @@ public class PokemonViewModel extends ViewModel {
     }
 
 
+
     public void searchPokemon(String id) {
 
         Timber.d("Searching pokemon with id: " + id);
@@ -84,7 +86,9 @@ public class PokemonViewModel extends ViewModel {
                     public void onSuccess(List<PokemonResponse> pokemonResponse) {
 
                         pokemon.setValue(pokemonResponse.get(0));
-                        resourceLiveData.setValue(Resource.success(pokemonResponse.get(0)));
+
+                        getFavourite(pokemonResponse.get(0).number);
+                        //resourceLiveData.setValue(Resource.success(pokemonResponse.get(0)));
                     }
 
                     @Override
@@ -94,6 +98,46 @@ public class PokemonViewModel extends ViewModel {
                 });
 
     }
+
+    public void sendPost(Pokemon pokemon){
+
+        Post post = new Post(Integer.parseInt(pokemon.getId()), pokemon.getName(), pokemon.getDescription());
+
+        pokemonRepository.postPokemon(post)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .unsubscribeOn(Schedulers.io())
+                .subscribe(new Observer<Post>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onNext(Post post) {
+
+                        if(post.getId() == 101){
+                            resourceLiveData.setValue(Resource.success(post, "Pokemon posted"));
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        resourceLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+
+
+    }
+
+
 
 
     public void addNote(Note note){
@@ -180,7 +224,6 @@ public class PokemonViewModel extends ViewModel {
     }
 
 
-
     public void getNotes(int idPokemon){
 
         disposables.add(
@@ -206,43 +249,98 @@ public class PokemonViewModel extends ViewModel {
         );
     }
 
-    public void sendPost(Pokemon pokemon){
-
-        Post post = new Post(Integer.parseInt(pokemon.getId()), pokemon.getName(), pokemon.getDescription());
-
-        pokemonRepository.postPokemon(post)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .unsubscribeOn(Schedulers.io())
-                     .subscribe(new Observer<Post>() {
-                         @Override
-                         public void onSubscribe(Disposable d) {
-                             disposables.add(d);
-                         }
-
-                         @Override
-                         public void onNext(Post post) {
-
-                             if(post.getId() == 101){
-                                 resourceLiveData.setValue(Resource.success(post, "Pokemon posted"));
-                             }
-                         }
-
-                         @Override
-                         public void onError(Throwable throwable) {
-                             resourceLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
-                         }
-
-                         @Override
-                         public void onComplete() {
-
-                         }
-                     });
 
 
 
+    public void setFavourite(boolean favourite, Pokemon pokemon){
 
+        if(favourite == true){
+            insertFavourite(pokemon);
+        }
+        else{
+            deleteFavourite(pokemon);
+        }
     }
 
 
+    private void insertFavourite(Pokemon pokemon){
+
+        pokemonRepository.insert(pokemon)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Long aLong) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
+
+    private void deleteFavourite(Pokemon pokemon){
+
+        pokemonRepository.delete(pokemon)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(Integer aInt) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+    }
+
+
+    private void getFavourite(String id){
+
+        pokemonRepository.exists(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MaybeObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Integer exists) {
+
+                        if(exists > 0) {
+                            pokemon.getValue().favourite = true;
+                        }
+
+
+                        resourceLiveData.setValue(Resource.success(pokemon.getValue()));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

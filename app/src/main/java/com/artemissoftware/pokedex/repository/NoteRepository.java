@@ -14,36 +14,36 @@ import java.util.List;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
-public class NoteRepository {
+public class NoteRepository implements Repository<Note>{
 
-    private PokemonGlitchApi api;
     private final NoteDao noteDao;
 
 
-    public NoteRepository(@NonNull PokemonGlitchApi api, @NonNull NoteDao noteDao) {
-        this.api = api;
+    public NoteRepository(@NonNull NoteDao noteDao) {
         this.noteDao = noteDao;
     }
 
 
-    public Single<List<PokemonResponse>> searchPokemon(String id) {
-        return api.searchPokemon(id);
+    @Override
+    public Single<Long> insert(Note item) {
+        return noteDao.insert(item);
     }
 
-    public Single<Long> insertNote(Note note) {
-        return noteDao.insert(note);
+    @Override
+    public Single<Integer> update(Note item) {
+        return noteDao.update(item);
     }
 
-    public Single<Integer> updateNote(Note note) {
-        return noteDao.update(note);
+    @Override
+    public Single<Integer> delete(Note item) {
+        return noteDao.delete(item);
     }
+
 
     public Flowable<List<Note>> getNotes(int idPokemon) {
         return noteDao.getNotes(idPokemon);
     }
 
 
-    public Single<Integer> deleteNote(Note note) {
-        return noteDao.delete(note);
-    }
+
 }

@@ -1,8 +1,10 @@
 package com.artemissoftware.pokedex.di.pokemon;
 
 import com.artemissoftware.pokedex.database.NoteDao;
+import com.artemissoftware.pokedex.database.PokemonDao;
 import com.artemissoftware.pokedex.database.PokemonDataBase;
 import com.artemissoftware.pokedex.repository.NoteRepository;
+import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 
 import javax.inject.Named;
@@ -20,11 +22,23 @@ public class PokemonModule {
     @Provides
     static NoteDao provideNoteDao(PokemonDataBase pokemonDataBase){
 
-        NoteDao database = pokemonDataBase.getNoteDao();
+        NoteDao dao = pokemonDataBase.getNoteDao();
 
-        Timber.d("Providing NoteDao: " + database);
-        return database;
+        Timber.d("Providing NoteDao: " + dao);
+        return dao;
     }
+
+
+    @PokemonScope
+    @Provides
+    static PokemonDao providePokemonDao(PokemonDataBase pokemonDataBase){
+
+        PokemonDao dao = pokemonDataBase.getPokemonDao();
+
+        Timber.d("Providing PokemonDao: " + dao);
+        return dao;
+    }
+
 
 
     @PokemonScope
@@ -35,16 +49,26 @@ public class PokemonModule {
 
         Timber.d("Providing PokemonGlitchApi: " + api);
         return api;
-
     }
 
     @PokemonScope
     @Provides
-    NoteRepository providePokemonRepository(PokemonGlitchApi apiInterface, NoteDao noteDao) {
+    NoteRepository provideNoteRepository(NoteDao noteDao) {
 
-        NoteRepository repository = new NoteRepository(apiInterface, noteDao);
+        NoteRepository repository = new NoteRepository(noteDao);
 
         Timber.d("Providing NoteRepository: " + repository);
+        return repository;
+    }
+
+
+    @PokemonScope
+    @Provides
+    PokemonRepository providePokemonRepository(PokemonGlitchApi apiInterface, PokemonDao pokemonDao) {
+
+        PokemonRepository repository = new PokemonRepository(apiInterface, pokemonDao);
+
+        Timber.d("Providing PokemonRepository: " + repository);
         return repository;
     }
 

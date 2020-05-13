@@ -4,7 +4,7 @@ import io.reactivex.Single;
 
 public interface Repository<T> {
 
-    Single<Long> save(T item);
+    //Single<Long> save(T item);
 
     Single<Long> insert(T item);
 

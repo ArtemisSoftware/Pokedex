@@ -15,7 +15,7 @@ import io.reactivex.Single;
 public class PokemonRepository implements Repository<Pokemon>{
 
     private final PokemonDao pokemonDao;
-    private PokemonGlitchApi api;
+    private final PokemonGlitchApi api;
 
 
     public PokemonRepository(@NonNull PokemonGlitchApi api, @NonNull PokemonDao pokemonDao) {
@@ -47,10 +47,7 @@ public class PokemonRepository implements Repository<Pokemon>{
     }
 
 
-    @Override
-    public Single<Long> save(Pokemon item) {
-        return null;
-    }
+
 
     @Override
     public Single<Integer> update(Pokemon item) {

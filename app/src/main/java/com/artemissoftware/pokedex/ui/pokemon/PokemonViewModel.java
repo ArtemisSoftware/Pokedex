@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.artemissoftware.pokedex.repository.NoteRepository;
+import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.ui.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
@@ -25,7 +26,8 @@ public class PokemonViewModel extends ViewModel {
 
     private final CompositeDisposable disposables;
 
-    private final NoteRepository repository;
+    private final NoteRepository noteRepository;
+    private final PokemonRepository pokemonRepository;
 
     private MutableLiveData<Resource> resourceLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
@@ -33,9 +35,10 @@ public class PokemonViewModel extends ViewModel {
 
 
     @Inject
-    public PokemonViewModel(NoteRepository repository){
+    public PokemonViewModel(NoteRepository noteRepository, PokemonRepository pokemonRepository){
 
-        this.repository = repository;
+        this.noteRepository = noteRepository;
+        this.pokemonRepository = pokemonRepository;
 
         this.disposables = new CompositeDisposable();
 
@@ -45,7 +48,7 @@ public class PokemonViewModel extends ViewModel {
 
 
 
-        Timber.d("Pokemon repository: " + this.repository);
+        Timber.d("Pokemon noteRepository: " + this.noteRepository);
         Timber.d("PokemonViewModel is working");
 
     }
@@ -64,8 +67,7 @@ public class PokemonViewModel extends ViewModel {
         Timber.d("Searching pokemon with id: " + id);
         //isPerformingQuery = true;
 
-
-        repository.searchPokemon(id)
+        pokemonRepository.searchPokemon(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<List<PokemonResponse>>() {
@@ -104,7 +106,7 @@ public class PokemonViewModel extends ViewModel {
 
     private void insertNote(Note note){
 
-        repository.insertNote(note)
+        noteRepository.insert(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Long>() {
@@ -128,7 +130,7 @@ public class PokemonViewModel extends ViewModel {
 
     private void updateNote(Note note){
 
-        repository.updateNote(note)
+        noteRepository.update(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Integer>() {
@@ -152,7 +154,7 @@ public class PokemonViewModel extends ViewModel {
 
     public void deleteNote(Note note){
 
-        repository.deleteNote(note)
+        noteRepository.delete(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Integer>() {
@@ -178,7 +180,7 @@ public class PokemonViewModel extends ViewModel {
     public void getNotes(int idPokemon){
 
         disposables.add(
-            repository.getNotes(idPokemon)
+            noteRepository.getNotes(idPokemon)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(

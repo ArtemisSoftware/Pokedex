@@ -14,4 +14,6 @@ public abstract class PokemonDataBase extends RoomDatabase {
 
     public abstract NoteDao getNoteDao();
 
+    public abstract PokemonDao getPokemonDao();
+
 }

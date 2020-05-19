@@ -55,7 +55,7 @@ public class PokemonModule {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConstants.JSON_PLACE_HOLDER_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                //.client(okHttpClient)
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

@@ -1,18 +1,634 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi Welcome Jhon !"
+            android:layout_marginLeft="15dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/badge_layout1"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="right"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/relative_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="34dip"
+                    android:layout_height="34dip"
+                    android:background="@drawable/ic_chat_black_24dp" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/badge_notification_1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@id/relative_layout"
+                android:background="@drawable/item_count"
+                android:text="1"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+<!--
+    <org.angmarch.views.NiceSpinner
+        android:id="@+id/nice_spinner"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_height="wrap_content"
+        />
+-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:gravity="center">
+
+
+            <androidx.cardview.widget.CardView
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:id="@+id/item1_"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="#FFFFFF"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0.3dp"
+                app:layout_collapseMode="pin">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="105dp"
+                            android:src="@drawable/ic_pokedex"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#bcbcbc"
+                            android:textSize="12sp"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/pokedex"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+<!--
+            <androidx.cardview.widget.CardView
+                android:layout_below="@+id/txt_message"
+                android:id="@+id/item1__"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="#FFFFFF"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:layout_collapseMode="pin">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="105dp"
+                            android:src="@drawable/ic_pokedex"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#bcbcbc"
+                            android:textSize="12sp"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/pokedex"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+-->
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+-->
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="40dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="15dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_below="@+id/txt_message"
+                        android:id="@+id/item1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="105dp"
+                                    android:layout_height="105dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_pokedex"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="26dp"
+                                    android:text="@string/pokedex"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="230dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/item2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="105dp"
+                                    android:layout_height="105dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_pokemon_library"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="26dp"
+                                    android:text="@string/pokedex"
+                                    android:textStyle="bold"/>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+-->
+<!--
+            //ROW 2
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="7.5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.CardView
+
+                        android:id="@+id/item3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_destination"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="14sp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Location"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Lucy mag going to office"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text=""/>
+                            </LinearLayout>
+                            <FrameLayout
+                                android:id="@+id/button3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </FrameLayout>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="7.5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.CardView
+
+                        android:id="@+id/item4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_bell"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="14sp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Activity"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="avorited your post "/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="2 Events"/>
+                            </LinearLayout>
+                            <FrameLayout
+                                android:id="@+id/button4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </FrameLayout>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            //ROW 3
+
+            //ROW 2
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="7.5dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/item5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_notebook"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="14sp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="To do"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Homework, Design"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="2 items"/>
+                            </LinearLayout>
+                            <FrameLayout
+                                android:id="@+id/button5"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </FrameLayout>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_below="@+id/txt_message"
+                        android:id="@+id/item6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#FFFFFF"
+                        android:theme="@style/ThemeOverlay.AppCompat.Light"
+                        app:cardBackgroundColor="@android:color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:layout_collapseMode="pin">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/ic_settings"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="14sp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Settings"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="2dp"
+                                    android:text=""/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#bcbcbc"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="2 Events"/>
+                            </LinearLayout>
+                            <FrameLayout
+                                android:id="@+id/button6"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                            </FrameLayout>
+
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+-->
+    <!--
+        </LinearLayout>-->
+    </ScrollView>
+</LinearLayout>

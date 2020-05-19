@@ -1,4 +1,4 @@
-package com.artemissoftware.pokedex.ui.encyclopedia.adapters;
+package com.artemissoftware.pokedex.ui.pokepidia.adapters;
 
 import android.view.View;
 

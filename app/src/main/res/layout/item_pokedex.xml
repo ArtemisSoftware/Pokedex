@@ -12,7 +12,7 @@
 
         <variable
             name="listener"
-            type="com.artemissoftware.pokedex.ui.encyclopedia.adapters.OnPokedexListener"/>
+            type="com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener"/>
 
     </data>
 

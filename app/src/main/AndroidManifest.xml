@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.pokemon.PokemonActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ui.encyclopedia.PokedexActivity" />
+        <activity android:name=".ui.pokepidia.PokedexActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

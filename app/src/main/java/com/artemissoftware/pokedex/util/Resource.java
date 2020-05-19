@@ -1,9 +1,7 @@
-package com.artemissoftware.pokedex.ui;
+package com.artemissoftware.pokedex.util;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import java.util.List;
 
 public class Resource <T> {
 

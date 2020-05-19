@@ -1,11 +1,11 @@
-package com.artemissoftware.pokedex.ui.encyclopedia;
+package com.artemissoftware.pokedex.ui.pokepidia;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.artemissoftware.pokedex.repository.PokedexRepository;
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
-import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.util.Resource;
 
 import java.util.List;
 

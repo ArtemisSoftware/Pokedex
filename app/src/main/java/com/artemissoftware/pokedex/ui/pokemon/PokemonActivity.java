@@ -10,7 +10,7 @@ import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityPokemonBinding;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
-import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.util.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.adapters.InfoPagerAdapter;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;

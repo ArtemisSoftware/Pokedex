@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
-import com.artemissoftware.pokedex.ui.encyclopedia.adapters.PokedexRecyclerAdapter;
+import com.artemissoftware.pokedex.ui.pokepidia.adapters.PokedexRecyclerAdapter;
 
 import java.util.List;
 

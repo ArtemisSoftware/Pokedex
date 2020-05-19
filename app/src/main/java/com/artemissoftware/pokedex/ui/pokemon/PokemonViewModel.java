@@ -7,7 +7,7 @@ import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.requests.models.Post;
-import com.artemissoftware.pokedex.ui.Resource;
+import com.artemissoftware.pokedex.util.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 

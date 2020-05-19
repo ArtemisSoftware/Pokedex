@@ -32,7 +32,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             style="@style/parent.contentLayout"
             android:fitsSystemWindows="true"
-            tools:context=".ui.encyclopedia.PokedexActivity">
+            tools:context=".ui.pokepidia.PokedexActivity">
 
 
             <LinearLayout

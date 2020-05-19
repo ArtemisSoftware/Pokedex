@@ -5,7 +5,7 @@ import com.artemissoftware.pokedex.MainActivity;
 import com.artemissoftware.pokedex.di.pokemon.PokemonModule;
 import com.artemissoftware.pokedex.di.pokemon.PokemonScope;
 import com.artemissoftware.pokedex.di.pokemon.PokemonViewModelsModule;
-import com.artemissoftware.pokedex.ui.encyclopedia.PokedexActivity;
+import com.artemissoftware.pokedex.ui.pokepidia.PokedexActivity;
 import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 
 import dagger.Module;

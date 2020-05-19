@@ -3,7 +3,7 @@ package com.artemissoftware.pokedex.di;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.artemissoftware.pokedex.ui.encyclopedia.PokedexViewModel;
+import com.artemissoftware.pokedex.ui.pokepidia.PokedexViewModel;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
 
 import dagger.Binds;

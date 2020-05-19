@@ -1,7 +1,6 @@
-package com.artemissoftware.pokedex.ui.encyclopedia;
+package com.artemissoftware.pokedex.ui.pokepidia;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -11,15 +10,10 @@ import android.os.Bundle;
 import com.artemissoftware.pokedex.BaseActivity;
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityPokedexBinding;
-import com.artemissoftware.pokedex.requests.models.PokedexResults;
-import com.artemissoftware.pokedex.ui.Resource;
-import com.artemissoftware.pokedex.ui.encyclopedia.adapters.OnPokedexListener;
-import com.artemissoftware.pokedex.ui.encyclopedia.adapters.PokedexRecyclerAdapter;
+import com.artemissoftware.pokedex.util.Resource;
+import com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener;
 import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 import com.artemissoftware.pokedex.util.viewmodel.ViewModelProviderFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 

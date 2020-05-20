@@ -12,6 +12,8 @@ public class ApiConstants {
     public static final String GAME_SPRITE_BACK_URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/number.png";
 
 
+    public static final String ALTERNATIVE_IMAGE_URL = "https://pokeres.bastionbot.org/images/pokemon/number.png";
+
 
     public static final int CONNECTION_TIMEOUT = 10; // 10 seconds
     public static final int READ_TIMEOUT = 20; // 2 seconds

@@ -350,7 +350,7 @@ public class PokemonViewModel extends ViewModel {
     }
 
 
-    private void getFavourites(){
+    public void getFavourites(){
 
         disposables.add(
 

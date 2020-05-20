@@ -36,8 +36,11 @@ public class FavouritesActivity extends BaseActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_favourites);
         binding.setLifecycleOwner(this);
+        binding.setViewmodel(viewModel);
 
         subscribeObservers();
+
+        viewModel.getFavourites();
     }
 
 

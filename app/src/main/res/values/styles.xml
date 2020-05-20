@@ -107,6 +107,8 @@
     </style>
 
 
+    <!-- ######## CARDS ############ -->
+
 
     <style name="mainMenuCard">
         <item name="android:layout_width">250dp</item>
@@ -116,6 +118,34 @@
         <item name="cardElevation">0.3dp</item>
         <item name="android:clickable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+
+    <style name="headerTextCard" parent="viewParent.headerText">
+        <!--
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:layout_alignParentTop">true</item>
+        -->
+    </style>
+
+    <style name="contentTextCard" parent="viewParent.headerText.contentText">
+        <!--
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:layout_alignParentTop">true</item>
+        -->
+    </style>
+
+    <style name="iconImageCard">
+        <!--
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:cropToPadding">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        -->
     </style>
 
 

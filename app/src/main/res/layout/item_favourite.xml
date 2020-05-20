@@ -2,22 +2,22 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<!--
-    <data>
 
-        <import type="com.artemissoftware.pokedex.R"/>
-        <import type="java.util.List"/>
+    <data>
+    <!--
+            <import type="com.artemissoftware.pokedex.R"/>
+
+                <variable
+                    name="listener"
+                    type="com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener"/>
+-->
 
         <variable
             name="pokemon"
-            type="com.artemissoftware.pokedex.requests.models.PokedexResults.PokemonInfo"/>
-
-        <variable
-            name="listener"
-            type="com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener"/>
+            type="com.artemissoftware.pokedex.ui.pokemon.models.Pokemon"/>
 
     </data>
--->
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -44,7 +44,7 @@
                 <TextView
                     android:id="@+id/textView11"
                     style="@style/headerTextCard"
-                    android:text="TextView"
+                    android:text="@{pokemon.name, default=Name}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -52,7 +52,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                    <!-- android:text="@{pokemon.name, default=Name}" -->
 
                 <TextView
                     android:id="@+id/textView12"

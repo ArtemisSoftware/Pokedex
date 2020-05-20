@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import com.artemissoftware.pokedex.databinding.ActivityMainBinding;
 import com.artemissoftware.pokedex.ui.pokepidia.PokedexActivity;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding.crdPokedex.setOnClickListener(this);
         //Intent intent = new Intent(this, PokedexActivity.class);
         //startActivity(intent);
+
     }
 
     @Override

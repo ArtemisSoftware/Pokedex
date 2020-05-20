@@ -51,9 +51,7 @@
                     style="@style/viewParent.headerText.contentText"
                     android:id="@+id/txt_number_results"
                     android:layout_marginLeft="5dp"
-                    android:text="@{StringUtil.size(viewmodel.pokemons.size()), default=0}"
-                     />
-                    <!-- android:text="@{viewmodel.numberPokemons, default=0}" -->
+                    android:text="@{StringUtil.size(viewmodel.pokemons.size()), default=0}"/>
             </LinearLayout>
 
 

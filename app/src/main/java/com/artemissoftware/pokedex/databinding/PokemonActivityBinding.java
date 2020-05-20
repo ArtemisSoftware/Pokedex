@@ -1,5 +1,9 @@
 package com.artemissoftware.pokedex.databinding;
 
+import android.graphics.drawable.Drawable;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +62,20 @@ public class PokemonActivityBinding {
         else{
             adapter.update(registers);
         }
+    }
+
+
+    @BindingAdapter({"wallpaper"})
+    public static void setWallpaper(ConstraintLayout view, int wallpaper) {
+
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackgroundDrawable(ContextCompat.getDrawable(view.getContext(), wallpaper) );
+        } else {
+            view.setBackground(ContextCompat.getDrawable(view.getContext(), wallpaper));
+        }
+
+        view.getBackground().setAlpha(25);
 
     }
 

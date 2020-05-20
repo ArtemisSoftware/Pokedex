@@ -5,6 +5,7 @@ import com.artemissoftware.pokedex.MainActivity;
 import com.artemissoftware.pokedex.di.pokemon.PokemonModule;
 import com.artemissoftware.pokedex.di.pokemon.PokemonScope;
 import com.artemissoftware.pokedex.di.pokemon.PokemonViewModelsModule;
+import com.artemissoftware.pokedex.ui.favourites.FavouritesActivity;
 import com.artemissoftware.pokedex.ui.pokepidia.PokedexActivity;
 import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 
@@ -34,5 +35,13 @@ public abstract class ActivityBuildersModule {
             modules = { PokemonViewModelsModule.class, PokemonModule.class }
     )
     abstract PokemonActivity contributePokemonActivity();
+
+
+    @PokemonScope
+    @ContributesAndroidInjector(
+            modules = { PokemonViewModelsModule.class, PokemonModule.class }
+    )
+    abstract FavouritesActivity contributeFavouritesActivity();
+
 
 }

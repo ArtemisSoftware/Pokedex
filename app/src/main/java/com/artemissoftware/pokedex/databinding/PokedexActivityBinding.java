@@ -33,7 +33,6 @@ public class PokedexActivityBinding {
             adapter = new PokedexRecyclerAdapter(view.getContext(), registers);
             view.setAdapter(adapter);
         }
-
     }
 
 }

@@ -46,7 +46,7 @@ public class PokemonActivity extends BaseActivity implements OnPokemonListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokemon);
+        //setContentView(R.layout.activity_pokemon);
 
 
         viewModel = ViewModelProviders.of(this, providerFactory).get(PokemonViewModel.class);

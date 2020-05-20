@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.artemissoftware.pokedex.databinding.ActivityMainBinding;
+import com.artemissoftware.pokedex.ui.favourites.FavouritesActivity;
 import com.artemissoftware.pokedex.ui.pokepidia.PokedexActivity;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         binding.crdPokedex.setOnClickListener(this);
+        binding.crdFavourites.setOnClickListener(this);
         //Intent intent = new Intent(this, PokedexActivity.class);
         //startActivity(intent);
 
@@ -41,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.crd_pokedex:
 
                 intent = new Intent(this, PokedexActivity.class);
+                break;
+
+            case R.id.crd_favourites:
+
+                intent = new Intent(this, FavouritesActivity.class);
                 break;
 
             default:

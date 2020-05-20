@@ -5,12 +5,16 @@
 
     <data>
     <!--
-            <import type="com.artemissoftware.pokedex.R"/>
+
 
                 <variable
                     name="listener"
                     type="com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener"/>
 -->
+        <import type="com.artemissoftware.pokedex.R"/>
+        <import type="com.artemissoftware.pokedex.util.ImageUtil"/>
+        <import type="com.artemissoftware.pokedex.util.StringUtil"/>
+
 
         <variable
             name="pokemon"
@@ -62,7 +66,7 @@
                     android:layout_marginStart="260dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="260dp"
-                    android:text="TextView"
+                    android:text="@{StringUtil.reference(pokemon.getId()), default=000}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -78,6 +82,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
+                    app:imageUrl="@{ImageUtil.getPokemonImageUrl(pokemon.getId())}"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <TextView

@@ -10,7 +10,6 @@ import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.util.ApiConstants;
 
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;

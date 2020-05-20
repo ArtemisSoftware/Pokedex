@@ -86,45 +86,32 @@
 
 
                 <androidx.cardview.widget.CardView
-
                     android:id="@+id/crd_pokedex"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:background="#FFFFFF"
-                    app:cardBackgroundColor="@android:color/white"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0.3dp"
+                    style="@style/mainMenuCard"
                     app:layout_collapseMode="pin">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:gravity="center">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:gravity="center">
 
-                            <ImageView
-                                android:layout_width="105dp"
-                                android:layout_height="105dp"
-                                android:src="@drawable/ic_pokedex"/>
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="105dp"
+                            android:src="@drawable/ic_pokedex"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#bcbcbc"
-                                android:textSize="12sp"
-                                android:layout_marginTop="30dp"
-                                android:text="@string/pokedex"
-                                android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#bcbcbc"
+                            android:textSize="12sp"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/pokedex"
+                            android:textStyle="bold"/>
 
-                        </LinearLayout>
+                    </LinearLayout>
 
-                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
 
@@ -132,47 +119,34 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content" />
 
-    <!--
                 <androidx.cardview.widget.CardView
-                    android:layout_below="@+id/txt_message"
-                    android:id="@+id/item1__"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:background="#FFFFFF"
-                    app:cardBackgroundColor="@android:color/white"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
+                    android:id="@+id/crd_favourites"
+                    style="@style/mainMenuCard"
                     app:layout_collapseMode="pin">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:gravity="center">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:gravity="center">
 
-                            <ImageView
-                                android:layout_width="105dp"
-                                android:layout_height="105dp"
-                                android:src="@drawable/ic_pokedex"/>
+                        <ImageView
+                            android:layout_width="105dp"
+                            android:layout_height="105dp"
+                            android:src="@drawable/ic_favourite_pokemon"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="#bcbcbc"
-                                android:textSize="12sp"
-                                android:layout_marginTop="30dp"
-                                android:text="@string/pokedex"
-                                android:textStyle="bold"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#bcbcbc"
+                            android:textSize="12sp"
+                            android:layout_marginTop="30dp"
+                            android:text="@string/favourites"
+                            android:textStyle="bold"/>
 
-                        </LinearLayout>
+                    </LinearLayout>
 
-                    </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-    -->
 
 
             </LinearLayout>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -100,12 +100,22 @@
     </style>
 
 
-
-
     <style name="editText" parent="parent">
         <item name="android:textColor">@color/color_third_text</item>
         <item name="android:textSize">16dp</item>
         <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+
+
+    <style name="mainMenuCard">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="cardBackgroundColor">@color/whiteTextColor</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="cardElevation">0.3dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 
 

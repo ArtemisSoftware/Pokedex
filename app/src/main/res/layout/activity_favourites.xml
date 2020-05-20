@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<!--
+    <data>
+
+        <import type="java.util.List"/>
+
+        <variable
+            name="viewmodel"
+            type="com.artemissoftware.pokedex.ui.pokepidia.PokedexViewModel"/>
+    </data>
+-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        style="@style/parent.contentLayout"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.favourites.FavouritesActivity">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/viewParent.headerText"
+                android:text="@string/favourites"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/viewParent.headerText.contentText"
+                    android:text="@string/availablePokemons" />
+
+                <TextView
+                    style="@style/viewParent.headerText.contentText"
+                    android:id="@+id/txt_number_results"
+                    android:layout_marginLeft="5dp"
+                     />
+                    <!-- android:text="@{viewmodel.numberPokemons, default=0}" -->
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcl_favorites"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:scrollbars="vertical"
+            android:verticalSpacing="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        <!-- app:pokedex="@{viewmodel.pokemons}" -->
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

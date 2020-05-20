@@ -11,6 +11,7 @@ import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -56,6 +57,9 @@ public class PokemonRepository implements Repository<Pokemon>{
     }
 
 
+    public Flowable<List<Pokemon>> getFavourites(){
+        return pokemonDao.getAll();
+    }
 
 
     @Override

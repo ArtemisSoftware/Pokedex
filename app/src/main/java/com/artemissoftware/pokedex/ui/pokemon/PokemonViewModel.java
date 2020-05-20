@@ -38,6 +38,7 @@ public class PokemonViewModel extends ViewModel {
     private MutableLiveData<Resource> messageLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
     public MutableLiveData<Resource> notes;
+    public MutableLiveData<List<Pokemon>> pokemons;
 
 
     @Inject
@@ -52,7 +53,7 @@ public class PokemonViewModel extends ViewModel {
         resourceLiveData = new MutableLiveData<>();
         pokemon = new MutableLiveData<>();
         notes = new MutableLiveData<>();
-
+        pokemons = new MutableLiveData<>();
 
 
         Timber.d("Pokemon noteRepository: " + this.noteRepository);
@@ -70,6 +71,10 @@ public class PokemonViewModel extends ViewModel {
 
     public MutableLiveData<Resource> observeNotes(){
         return notes;
+    }
+
+    public MutableLiveData<List<Pokemon>> observeFavourites(){
+        return pokemons;
     }
 
 
@@ -343,4 +348,31 @@ public class PokemonViewModel extends ViewModel {
                     }
                 });
     }
+
+
+    private void getFavourites(){
+
+        disposables.add(
+
+            pokemonRepository.getFavourites()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(
+                            new Consumer<List<Pokemon>>() {
+                                @Override
+                                public void accept(List<Pokemon> list) throws Exception {
+                                    pokemons.setValue(list);
+                                }
+                            },
+                            new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                                }
+                            }
+                    )
+        );
+    }
+
+
 }

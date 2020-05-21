@@ -38,6 +38,8 @@ public class FavouritesActivity extends BaseActivity {
         binding.setLifecycleOwner(this);
         binding.setViewmodel(viewModel);
 
+
+
         subscribeObservers();
 
         viewModel.getFavourites();

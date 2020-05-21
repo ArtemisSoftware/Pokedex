@@ -13,7 +13,7 @@ public class ImageUtil {
     }
 
 
-    public static int getRandom() {
+    public static int getRandomBackground() {
 
         int[] array = {R.drawable.pokemon_bg_1, R.drawable.pokemon_bg_3, R.drawable.pokemon_bg_4, R.drawable.pokemon_bg_5};
         int rnd = new Random().nextInt(array.length);

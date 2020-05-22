@@ -6,6 +6,8 @@ import android.view.View;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.artemissoftware.pokedex.ui.favourites.adapters.FavouriteViewHolder;
+
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     private RecyclerItemTouchHelperListener listener;
 
@@ -22,27 +24,27 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (viewHolder != null) {
-            //final View foregroundView = ((CartListAdapter.MyViewHolder) viewHolder).viewForeground;
-            //getDefaultUIUtil().onSelected(foregroundView);
+            final View foregroundView = ((FavouriteViewHolder) viewHolder).getBinding().viewForeground;
+            getDefaultUIUtil().onSelected(foregroundView);
         }
     }
 
     @Override
     public void onChildDrawOver(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        //final View foregroundView = ((CartListAdapter.MyViewHolder) viewHolder).viewForeground;
-        //getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
+        final View foregroundView = ((FavouriteViewHolder) viewHolder).getBinding().viewForeground;
+        getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
     }
 
     @Override
     public void clearView(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        //final View foregroundView = ((CartListAdapter.MyViewHolder) viewHolder).viewForeground;
-        //getDefaultUIUtil().clearView(foregroundView);
+        final View foregroundView = ((FavouriteViewHolder) viewHolder).getBinding().viewForeground;
+        getDefaultUIUtil().clearView(foregroundView);
     }
 
     @Override
     public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-        //final View foregroundView = ((CartListAdapter.MyViewHolder) viewHolder).viewForeground;
-        //getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
+        final View foregroundView = ((FavouriteViewHolder) viewHolder).getBinding().viewForeground;
+        getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive);
     }
 
     @Override

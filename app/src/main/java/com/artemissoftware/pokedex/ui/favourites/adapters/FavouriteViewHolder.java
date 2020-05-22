@@ -16,4 +16,9 @@ public class FavouriteViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         binding = DataBindingUtil.bind(itemView);
     }
+
+
+    public ItemFavouriteBinding getBinding() {
+        return binding;
+    }
 }

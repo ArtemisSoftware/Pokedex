@@ -48,4 +48,9 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
     }
 
 
+    public void removeItem(int position){
+
+        items.remove(position);
+        notifyDataSetChanged();
+    }
 }

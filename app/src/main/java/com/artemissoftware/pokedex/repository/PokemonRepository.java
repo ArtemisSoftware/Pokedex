@@ -11,6 +11,7 @@ import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Observable;
@@ -65,5 +66,10 @@ public class PokemonRepository implements Repository<Pokemon>{
     @Override
     public Single<Integer> update(Pokemon item) {
         return null;
+    }
+
+
+    public Completable delete(String idPokemon) {
+        return pokemonDao.delete(idPokemon);
     }
 }

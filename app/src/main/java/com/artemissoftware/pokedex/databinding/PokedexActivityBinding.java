@@ -1,6 +1,7 @@
 package com.artemissoftware.pokedex.databinding;
 
 import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,6 +57,9 @@ public class PokedexActivityBinding {
 
         if(adapter == null){
             adapter = new FavouritesRecyclerAdapter(registers);
+
+            view.setItemAnimator(new DefaultItemAnimator());
+            view.getItemAnimator().setRemoveDuration(500);
             view.setAdapter(adapter);
         }
         /*

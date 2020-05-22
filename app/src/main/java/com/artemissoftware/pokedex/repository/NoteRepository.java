@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
@@ -44,6 +45,8 @@ public class NoteRepository implements Repository<Note>{
         return noteDao.getNotes(idPokemon);
     }
 
-
+    public Completable delete(String idPokemon) {
+        return noteDao.delete(idPokemon);
+    }
 
 }

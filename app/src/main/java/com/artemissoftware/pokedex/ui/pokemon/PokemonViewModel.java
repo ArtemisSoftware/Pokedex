@@ -3,6 +3,7 @@ package com.artemissoftware.pokedex.ui.pokemon;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.artemissoftware.pokedex.database.PokemonDataBase;
 import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
@@ -16,12 +17,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
 import io.reactivex.MaybeObserver;
 import io.reactivex.Observer;
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
@@ -40,6 +44,9 @@ public class PokemonViewModel extends ViewModel {
     public MutableLiveData<Resource> notes;
     public MutableLiveData<List<Pokemon>> pokemons;
 
+
+    @Inject
+    PokemonDataBase pokemonDataBase;
 
     @Inject
     public PokemonViewModel(NoteRepository noteRepository, PokemonRepository pokemonRepository){
@@ -75,6 +82,12 @@ public class PokemonViewModel extends ViewModel {
 
     public MutableLiveData<List<Pokemon>> observeFavourites(){
         return pokemons;
+    }
+
+
+    @Override
+    protected void onCleared() {
+        disposables.clear();
     }
 
 
@@ -376,5 +389,107 @@ public class PokemonViewModel extends ViewModel {
 
 
 
+
+    public void removeFavourite(int position){
+
+        
+        /*
+        Single.concatArray(noteRepository.delete(pokemons.getValue().get(position).getId()), pokemonRepository.delete(pokemons.getValue().get(position)))
+                .observeOn(Schedulers.single()) // OFF UI THREAD
+                .doOnSubscribe(new Consumer<Subscription>() {
+                    @Override
+                    public void accept(Subscription subscription) throws Exception {
+                        pokemonDataBase.beginTransaction();
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Timber.d("doOnComplete: ");
+                        pokemonDataBase.setTransactionSuccessful();
+                    }
+                })
+                .doFinally(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Timber.d("doFinally: ");
+
+                        if(pokemonDataBase.inTransaction() == true) {
+                            pokemonDataBase.endTransaction();
+                        }
+                    }
+                })
+                .subscribeOn(Schedulers.single())
+                .observeOn(AndroidSchedulers.mainThread()) // ON UI THREAD
+
+        .subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+
+            }
+
+        },
+                new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                    }
+                }) ;
+                        */
+
+
+        Completable.concatArray(noteRepository.delete(pokemons.getValue().get(position).getId()), pokemonRepository.delete(pokemons.getValue().get(position).getId()))
+                .observeOn(Schedulers.single()) // OFF UI THREAD
+
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+
+                        if(disposable != null) {
+                            disposables.add(disposable);
+                        }
+
+                        pokemonDataBase.beginTransaction();
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Timber.d("doOnComplete: ");
+                        pokemonDataBase.setTransactionSuccessful();
+                    }
+                })
+                .doFinally(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        Timber.d("doFinally: ");
+
+                        if(pokemonDataBase.inTransaction() == true) {
+                            pokemonDataBase.endTransaction();
+                        }
+                    }
+                })
+                .subscribeOn(Schedulers.single())
+                .observeOn(AndroidSchedulers.mainThread()) // ON UI THREAD
+                .subscribeWith(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposables.add(d);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        messageLiveData.setValue(Resource.success(position));
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        messageLiveData.setValue(Resource.error(throwable.getMessage(), "Execution error"));
+                    }
+                });
+
+
+    }
 
 }

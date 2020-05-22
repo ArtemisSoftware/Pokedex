@@ -25,12 +25,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <RelativeLayout
             android:id="@+id/view_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/parent.contentLayout"
             android:background="@color/gradientViolet">
 
             <ImageView
@@ -70,9 +72,6 @@
                 app:cardElevation="3dp"
                 >
                 <!-- android:onClick="@{() -> listener.onPokedexClick(pokemon.getId()) }" -->
-                <!-- android:background="@{ImageUtil.getRandom()}" -->
-
-
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -144,8 +143,6 @@
 
 
         </RelativeLayout>
-
-
 
     </FrameLayout>
 

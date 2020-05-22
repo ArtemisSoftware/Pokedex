@@ -6,11 +6,13 @@ import android.widget.ProgressBar;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public abstract class BaseActivity extends DaggerAppCompatActivity {
 
     public ProgressBar mProgressBar;
+    public SweetAlertDialog dialog;
     //public AwesomeSuccessDialog pDialog;
 /*
     @Override

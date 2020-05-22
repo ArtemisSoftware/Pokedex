@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.artemissoftware.pokedex.BaseActivity;
@@ -16,7 +17,9 @@ import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ActivityFavouritesBinding;
 import com.artemissoftware.pokedex.ui.favourites.adapters.FavouriteViewHolder;
 import com.artemissoftware.pokedex.ui.favourites.adapters.FavouritesRecyclerAdapter;
+import com.artemissoftware.pokedex.ui.pokemon.PokemonActivity;
 import com.artemissoftware.pokedex.ui.pokemon.PokemonViewModel;
+import com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener;
 import com.artemissoftware.pokedex.util.Resource;
 import com.artemissoftware.pokedex.util.adapters.RecyclerItemTouchHelper;
 import com.artemissoftware.pokedex.util.adapters.RecyclerItemTouchHelperListener;
@@ -26,7 +29,7 @@ import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class FavouritesActivity extends BaseActivity implements RecyclerItemTouchHelperListener {
+public class FavouritesActivity extends BaseActivity implements RecyclerItemTouchHelperListener, OnPokedexListener {
 
 
     private ActivityFavouritesBinding binding;
@@ -90,5 +93,21 @@ public class FavouritesActivity extends BaseActivity implements RecyclerItemTouc
             viewModel.removeFavourite(viewHolder.getAdapterPosition());
         }
 
+    }
+
+    @Override
+    public void onPokedexClick(String id) {
+
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.key_pokemon_id), id);
+
+        Intent intent = new Intent(this, PokemonActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

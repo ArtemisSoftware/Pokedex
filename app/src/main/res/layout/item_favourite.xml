@@ -4,13 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-    <!--
-
 
                 <variable
                     name="listener"
                     type="com.artemissoftware.pokedex.ui.pokepidia.adapters.OnPokedexListener"/>
--->
+
         <import type="com.artemissoftware.pokedex.R"/>
         <import type="com.artemissoftware.pokedex.util.ImageUtil"/>
         <import type="com.artemissoftware.pokedex.util.StringUtil"/>
@@ -70,8 +68,9 @@
                 app:cardCornerRadius="15dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardElevation="3dp"
+                android:onClick="@{() -> listener.onPokedexClick(favourite.getId()) }"
                 >
-                <!-- android:onClick="@{() -> listener.onPokedexClick(pokemon.getId()) }" -->
+                <!--  -->
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout

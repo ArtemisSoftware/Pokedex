@@ -57,7 +57,7 @@ public class PokedexActivityBinding {
         FavouritesRecyclerAdapter adapter = (FavouritesRecyclerAdapter) view.getAdapter();
 
         if(adapter == null){
-            adapter = new FavouritesRecyclerAdapter(registers);
+            adapter = new FavouritesRecyclerAdapter(view.getContext(), registers);
 
             view.setItemAnimator(new DefaultItemAnimator());
             view.getItemAnimator().setRemoveDuration(500);

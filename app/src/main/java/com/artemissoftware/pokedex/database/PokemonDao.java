@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Query;
 import androidx.room.RawQuery;
 
+import com.artemissoftware.pokedex.ui.favourites.model.Favourite;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.List;
@@ -25,5 +26,10 @@ abstract public class PokemonDao implements BaseDao<Pokemon>{
 
     @Query("DELETE FROM pokemons WHERE id = :id")
     abstract public Completable delete(String id);
+
+
+    @Query("SELECT id, name, description, numberNotes FROM pokemons as pkm LEFT JOIN (SELECT idPokemon, COUNT(id) as numberNotes FROM notes GROUP BY idPokemon) as nts ON pkm.id = nts.idPokemon ORDER BY id ASC")
+    abstract public Flowable<List<Favourite>> getFavourites();
+
 
 }

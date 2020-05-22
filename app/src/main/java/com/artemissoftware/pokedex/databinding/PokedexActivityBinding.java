@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemissoftware.pokedex.requests.models.PokedexResults;
 import com.artemissoftware.pokedex.ui.favourites.adapters.FavouritesRecyclerAdapter;
+import com.artemissoftware.pokedex.ui.favourites.model.Favourite;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 import com.artemissoftware.pokedex.ui.pokepidia.adapters.PokedexRecyclerAdapter;
 
@@ -41,7 +42,7 @@ public class PokedexActivityBinding {
 
 
     @BindingAdapter("favourites")
-    public static void setFavourites(RecyclerView view, List<Pokemon> registers) {
+    public static void setFavourites(RecyclerView view, List<Favourite> registers) {
 
         if(registers == null){
             return;

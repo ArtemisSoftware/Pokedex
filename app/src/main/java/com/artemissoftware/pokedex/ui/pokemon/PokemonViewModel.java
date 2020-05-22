@@ -8,6 +8,7 @@ import com.artemissoftware.pokedex.repository.NoteRepository;
 import com.artemissoftware.pokedex.repository.PokemonRepository;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.requests.models.Post;
+import com.artemissoftware.pokedex.ui.favourites.model.Favourite;
 import com.artemissoftware.pokedex.util.Resource;
 import com.artemissoftware.pokedex.ui.pokemon.models.Note;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
@@ -42,7 +43,7 @@ public class PokemonViewModel extends ViewModel {
     private MutableLiveData<Resource> messageLiveData;
     public MutableLiveData<PokemonResponse> pokemon;
     public MutableLiveData<Resource> notes;
-    public MutableLiveData<List<Pokemon>> pokemons;
+    public MutableLiveData<List<Favourite>> pokemons;
 
 
     @Inject
@@ -80,7 +81,7 @@ public class PokemonViewModel extends ViewModel {
         return notes;
     }
 
-    public MutableLiveData<List<Pokemon>> observeFavourites(){
+    public MutableLiveData<List<Favourite>> observeFavourites(){
         return pokemons;
     }
 
@@ -371,9 +372,9 @@ public class PokemonViewModel extends ViewModel {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
-                            new Consumer<List<Pokemon>>() {
+                            new Consumer<List<Favourite>>() {
                                 @Override
-                                public void accept(List<Pokemon> list) throws Exception {
+                                public void accept(List<Favourite> list) throws Exception {
                                     pokemons.setValue(list);
                                 }
                             },

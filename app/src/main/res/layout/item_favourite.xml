@@ -17,8 +17,8 @@
 
 
         <variable
-            name="pokemon"
-            type="com.artemissoftware.pokedex.ui.pokemon.models.Pokemon"/>
+            name="favourite"
+            type="com.artemissoftware.pokedex.ui.favourites.model.Favourite"/>
 
     </data>
 
@@ -88,7 +88,7 @@
                         android:layout_marginStart="257dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginEnd="257dp"
-                        android:text="@{pokemon.name, default=Name}"
+                        android:text="@{favourite.name, default=Name}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -101,7 +101,7 @@
                         android:layout_marginStart="260dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="260dp"
-                        android:text="@{StringUtil.reference(pokemon.getId()), default=000}"
+                        android:text="@{StringUtil.reference(favourite.getId()), default=000}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -118,7 +118,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:defaultImageUrl="@{R.drawable.ic_launcher_foreground}"
-                        app:imageUrl="@{ImageUtil.getPokemonImageUrl(pokemon.getId())}"
+                        app:imageUrl="@{ImageUtil.getPokemonImageUrl(favourite.getId())}"
                         app:srcCompat="@mipmap/ic_launcher" />
 
                     <TextView
@@ -129,7 +129,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="261dp"
                         android:layout_marginBottom="32dp"
-                        android:text="@{pokemon.description, default=Description}"
+                        android:text="@{favourite.description, default=Description}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

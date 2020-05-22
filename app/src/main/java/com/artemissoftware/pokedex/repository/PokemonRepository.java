@@ -7,6 +7,7 @@ import com.artemissoftware.pokedex.requests.api.JsonPlaceHolderApi;
 import com.artemissoftware.pokedex.requests.api.PokemonGlitchApi;
 import com.artemissoftware.pokedex.requests.models.PokemonResponse;
 import com.artemissoftware.pokedex.requests.models.Post;
+import com.artemissoftware.pokedex.ui.favourites.model.Favourite;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.List;
@@ -58,8 +59,8 @@ public class PokemonRepository implements Repository<Pokemon>{
     }
 
 
-    public Flowable<List<Pokemon>> getFavourites(){
-        return pokemonDao.getAll();
+    public Flowable<List<Favourite>> getFavourites(){
+        return pokemonDao.getFavourites();
     }
 
 

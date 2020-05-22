@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artemissoftware.pokedex.R;
 import com.artemissoftware.pokedex.databinding.ItemFavouriteBinding;
+import com.artemissoftware.pokedex.ui.favourites.model.Favourite;
 import com.artemissoftware.pokedex.ui.pokemon.models.Pokemon;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ import java.util.List;
 public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
-    private List<Pokemon> items = new ArrayList<>();
+    private List<Favourite> items = new ArrayList<>();
 
-    public FavouritesRecyclerAdapter(List<Pokemon> items) {
+    public FavouritesRecyclerAdapter(List<Favourite> items) {
         this.items = items;
     }
 
@@ -35,8 +36,8 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        Pokemon register = items.get(position);
-        ((FavouriteViewHolder)holder).binding.setPokemon(register);
+        Favourite register = items.get(position);
+        ((FavouriteViewHolder)holder).binding.setFavourite(register);
 
         ((FavouriteViewHolder)holder).binding.executePendingBindings();
 

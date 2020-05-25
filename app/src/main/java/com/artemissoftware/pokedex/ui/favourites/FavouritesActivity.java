@@ -106,8 +106,4 @@ public class FavouritesActivity extends BaseActivity implements RecyclerItemTouc
         startActivity(intent);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 }

@@ -63,11 +63,10 @@ public class PokedexActivityBinding {
             view.getItemAnimator().setRemoveDuration(500);
             view.setAdapter(adapter);
         }
-        /*
         else{
             adapter.update(registers);
         }
-        */
+
     }
 
 

@@ -60,4 +60,10 @@ public class FavouritesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView
         items.remove(position);
         notifyDataSetChanged();
     }
+
+    public void update(List<Favourite> registers) {
+        items.clear();
+        items.addAll(registers);
+        notifyDataSetChanged();
+    }
 }

@@ -12,7 +12,7 @@ public class StringUtil {
     }
 
 
-    public static String size(int number){
+    public static String convertToString(int number){
         return number + "";
     }
 
